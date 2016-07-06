@@ -182,12 +182,12 @@ INT_PTR CALLBACK MainDlgProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
 
 			GetDlgItemText(hWndMain, IDC_ESkill, temp, 128);
-			sscanf(temp, "%d %d %d %d", &mob->SkillBar[0], &mob->SkillBar[1], &mob->SkillBar[2], &mob->SkillBar[3]);
+			sscanf(temp, "%hhu %hhu %hhu %hhu", &mob->SkillBar[0], &mob->SkillBar[1], &mob->SkillBar[2], &mob->SkillBar[3]);
 
 			mob->LearnedSkill = GetDlgItemInt(hWndMain, IDC_ELearn, FALSE, FALSE);
 
 			GetDlgItemText(hWndMain, IDC_ERegist, temp, 128);
-			sscanf(temp, "%d %d %d %d", &mob->Resist[0], &mob->Resist[1], &mob->Resist[2], &mob->Resist[3]);
+			sscanf(temp, "%hhd %hhd %hhd %hhd", &mob->Resist[0], &mob->Resist[1], &mob->Resist[2], &mob->Resist[3]);
 
 			mob->ScoreBonus = GetDlgItemInt(hWndMain, IDC_EBonus, FALSE, TRUE);
 

@@ -474,8 +474,8 @@ int  CCastleZakum::ParseCastleString(int Num, char *str)
 	if (strlen(str2) > 80)
 		return FALSE;
 
-	strupr(str1);
-	strupr(str2);
+	_strupr(str1);
+	_strupr(str2);
 
 	if (!strcmp(str1, "MOB_INITIAL:"))
 		CastleQuest[Num].MOB_INITIAL = value;

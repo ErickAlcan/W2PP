@@ -38,7 +38,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 
 	unsigned int LastAttackTick = 0;
 
-	if (ClientTick != SKIPCHECKTICK && pUser[conn].LastAttackTick != SKIPCHECKTICK && m->ClientTick < pUser[conn].LastAttackTick + 800)
+	if (ClientTick != SKIPCHECKTICK && pUser[conn].LastAttackTick != SKIPCHECKTICK && m->ClientTick < (unsigned int)pUser[conn].LastAttackTick + 800)
 	{
 		sprintf(temp, "err,attack %d %d 800ms limit", m->ClientTick, pUser[conn].LastAttackTick);
 
@@ -49,7 +49,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 
 	if (ClientTick != SKIPCHECKTICK && pUser[conn].LastAttackTick != SKIPCHECKTICK)
 	{
-		if (ClientTick < pUser[conn].LastAttackTick - 100)
+		if (ClientTick < (unsigned int)pUser[conn].LastAttackTick - 100)
 			AddCrackError(conn, 4, 7);
 
 		LastAttackTick = pUser[conn].LastAttackTick;
@@ -67,7 +67,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 		else
 			ClientTick15sec = CurrentTime - 120000;
 
-		if (ClientTick > CurrentTime + 15000 || ClientTick < ClientTick15sec)
+		if (ClientTick > CurrentTime + 15000 || ClientTick < (unsigned int)ClientTick15sec)
 		{
 			Log("etc,clienttime faster than 15 sec - MSG_ATTACK", pUser[conn].AccountName, pUser[conn].IP);
 			AddCrackError(conn, 1, 107);
@@ -109,7 +109,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 
 			int skilldelay = g_pSpell[skillnum].Delay;
 
-			if (pMob[conn].MOB.Rsv & RSV_CAST != 0 && skilldelay >= 2)
+			if ((pMob[conn].MOB.Rsv & RSV_CAST) != 0 && skilldelay >= 2)
 				skilldelay--;
 
 			skilldelay = skilldelay * 1000;
@@ -436,7 +436,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 			if (idx < MAX_USER)
 				Ac *= 3;
 
-			dam = BASE_GetDamage(dam, Ac, master);
+			dam = BASE_GetDamage((int)dam, Ac, master);
 
 			if (i == 0 && m->Size >= sizeof(MSG_AttackTwo) && pMob[conn].MOB.Class == 3 && (pMob[conn].MOB.LearnedSkill & 0x200000) && (rand() % 4) == 0)
 			{
@@ -546,7 +546,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 				if (pMob[idx].MOB.Class == 1)
 					def = (def * 3) / 2;
 
-				dam = BASE_GetSkillDamage(dam, def, master);
+				dam = BASE_GetSkillDamage((int)dam, def, master);
 
 				if (InstanceType == 1)
 				{
@@ -580,7 +580,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 				if (idx < MAX_USER)
 					Ac *= 3;
 
-				dam = BASE_GetDamage(dam, Ac, master);
+				dam = BASE_GetDamage((int)dam, Ac, master);
 
 				dam = dam / 2;
 			}
@@ -634,7 +634,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 					if (sanc < 2)
 						sanc = 2;
 
-					pMob[idx].MOB.CurrentScore.Hp = pMob[idx].MOB.CurrentScore.Hp - (dam / sanc);
+					pMob[idx].MOB.CurrentScore.Hp = pMob[idx].MOB.CurrentScore.Hp - ((int)dam / sanc);
 
 				}
 				else  if (pMob[idx].MOB.Equip[13].sIndex == 1936)
@@ -645,7 +645,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 
 					sanc *= 10;
 
-					pMob[idx].MOB.CurrentScore.Hp = pMob[idx].MOB.CurrentScore.Hp - (dam / (sanc * 10));
+					pMob[idx].MOB.CurrentScore.Hp = pMob[idx].MOB.CurrentScore.Hp - ((int)dam / (sanc * 10));
 
 				}
 
@@ -657,12 +657,12 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 
 					sanc *= 1000;
 
-					pMob[idx].MOB.CurrentScore.Hp = pMob[idx].MOB.CurrentScore.Hp - (dam / (sanc * 20));
+					pMob[idx].MOB.CurrentScore.Hp = pMob[idx].MOB.CurrentScore.Hp - ((int)dam / (sanc * 20));
 
 				}
 
 				else
-					pMob[idx].MOB.CurrentScore.Hp = pMob[idx].MOB.CurrentScore.Hp - dam;
+					pMob[idx].MOB.CurrentScore.Hp = pMob[idx].MOB.CurrentScore.Hp - (int)dam;
 
 
 				if (pMob[idx].MOB.CurrentScore.Hp > pMob[idx].MOB.CurrentScore.MaxHp)
@@ -1164,7 +1164,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 						SameLeaderGuild = 0;
 				}
 
-				if (pMob[idx].MOB.Rsv & 0x80 != FALSE)
+				if ((pMob[idx].MOB.Rsv & 0x80) != FALSE)
 					SameLeaderGuild = 0;
 
 				if (conn < MAX_USER && pMob[idx].MOB.Clan == 6)
@@ -1258,7 +1258,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 			return;
 		}
 
-		m->Dam[i].Damage = dam;
+		m->Dam[i].Damage = (int)dam;
 
 		if (dam <= 0)
 			continue;
@@ -1281,7 +1281,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 			else if (dam > 0)
 				dam = dam + pMob[conn].ForceDamage;
 
-			m->Dam[i].Damage = dam;
+			m->Dam[i].Damage = (int)dam;
 		}
 #pragma endregion
 
@@ -1294,7 +1294,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 			else if (dam > 0)
 				dam += (dam / 100 * pMob[conn].PvPDamage);
 
-			m->Dam[i].Damage = dam;
+			m->Dam[i].Damage = (int)dam;
 		}
 #pragma endregion
 
@@ -1393,7 +1393,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 				{
 					dam = -3;
 
-					if (pMob[idx].MOB.Rsv & 0x200 != 0 && rd < 100)
+					if ((pMob[idx].MOB.Rsv & 0x200) != 0 && rd < 100)
 						dam = -4;
 				}
 			}
@@ -1407,10 +1407,10 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 				unsigned char TargetMapAttribute = GetAttribute(pMob[idx].TargetX, pMob[idx].TargetY);
 				unsigned char MapAttribute = GetAttribute(pMob[conn].TargetX, pMob[conn].TargetY);
 
-				if (TargetMapAttribute & 0x1 == 0 || (TargetMapAttribute & 64) == 0)
+				if ((TargetMapAttribute & 0x1) == 0 || (TargetMapAttribute & 64) == 0)
 					dam = 0;
 
-				if (MapAttribute & 0x1 == 0 || (MapAttribute & 64) == 0)
+				if ((MapAttribute & 0x1) == 0 || (MapAttribute & 64) == 0)
 					dam = 0;
 			}
 		}
@@ -1424,7 +1424,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 		if (dam >= MAX_DAMAGE)
 			dam = MAX_DAMAGE;
 
-		m->Dam[i].Damage = dam;
+		m->Dam[i].Damage = (int)dam;
 
 		if (dam <= 0)
 			continue;
@@ -1472,7 +1472,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 			if (dam <= 0)
 				dam = 1;
 
-			m->Dam[i].Damage = dam;
+			m->Dam[i].Damage = (int)dam;
 		}
 
 		if (pMob[conn].TargetX >= 1017 && pMob[conn].TargetX <= 1290 && pMob[conn].TargetY >= 1911 && pMob[conn].TargetY <= 2183 && dam > 0 && pMob[conn].MOB.Clan == pMob[idx].MOB.Clan)
@@ -1483,15 +1483,15 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 			continue;
 		}
 
-		int _pDamage = dam;
+		int _pDamage = (int)dam;
 		int _calcDamage = 0;
 		int pTargetMountId = pMob[idx].MOB.Equip[14].sIndex;
 
 		if (idx < MAX_USER && pTargetMountId >= 2360 && pTargetMountId < 2390 && pMob[idx].MOB.Equip[14].stEffect[0].sValue > 0)
 		{
 
-			_pDamage = (dam * 3) >> 2;
-			_calcDamage = dam - _pDamage;
+			_pDamage = (int)((dam * 3) >> 2);
+			_calcDamage = (int)(dam - _pDamage);
 			if (_pDamage <= 0)
 				_pDamage = 1;
 
@@ -1616,7 +1616,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 #pragma region Joia Abs
 		if (pMob[conn].HpAbs != 0 && (rand() % 2) == 0 && dam >= 1)
 		{
-			int RecHP = (dam * pMob[conn].HpAbs + 1) / 100;
+			int RecHP = (int)((dam * pMob[conn].HpAbs + 1) / 100);
 
 			if (RecHP > 350)
 				RecHP = 350;

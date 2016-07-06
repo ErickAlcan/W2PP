@@ -79,7 +79,7 @@ void Exec_MSG_Action(int conn, char *pMsg)
 			AddCrackError(conn, 1, 105);
 			return;
 		}
-		if (movetime > CurrentTime + 15000 || movetime < checktime)
+		if ((unsigned int)movetime > CurrentTime + 15000 || movetime < checktime)
 		{
 			sprintf(temp, "err,illusion %d %d 15000ms limit", movetime, CurrentTime);
 
@@ -102,7 +102,7 @@ void Exec_MSG_Action(int conn, char *pMsg)
 			AddCrackError(conn, 1, 103);
 			return;
 		}
-		if (movetime > CurrentTime + 15000 || movetime < checktime)
+		if ((unsigned int)movetime > CurrentTime + 15000 || movetime < checktime)
 		{
 			sprintf(temp, "err,illusion %d %d 15000ms limit", movetime, CurrentTime);
 

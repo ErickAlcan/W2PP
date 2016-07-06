@@ -3029,7 +3029,7 @@ lbl_a_noparty:
 			pMob[conn].MOB.Equip[0].stEffect[1].cEffect = 98;
 			pMob[conn].MOB.Equip[0].stEffect[1].cValue = 3;
 			pMob[conn].MOB.Equip[0].stEffect[2].cEffect = 106;
-			pMob[conn].MOB.Equip[0].stEffect[2].cValue = pMob[conn].MOB.Equip[0].sIndex;
+			pMob[conn].MOB.Equip[0].stEffect[2].cValue = (unsigned char)pMob[conn].MOB.Equip[0].sIndex;
 
 			SendClientMessage(conn, g_pMessageStringTable[_NN_My_King_Bless1]);
 		}
@@ -3166,8 +3166,8 @@ lbl_a_noparty:
 
 		if (mtime < (pMob[conn].extra.LastNT + 72000))
 		{
-			int rtime = (72000 - (mtime - pMob[conn].extra.LastNT)) / 60 / 60;
-			int rmin = (72000 - (mtime - pMob[conn].extra.LastNT)) / 60 - (rtime*60);
+			int rtime = (int)((72000 - (mtime - pMob[conn].extra.LastNT)) / 60 / 60);
+			int rmin = (int)((72000 - (mtime - pMob[conn].extra.LastNT)) / 60 - (rtime * 60));
 
 			sprintf(temp, g_pMessageStringTable[_DD_NightmareTime], rtime, rmin);
 			SendClientMessage(conn, temp);

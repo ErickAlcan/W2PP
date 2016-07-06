@@ -641,7 +641,9 @@ void CPSock::RefreshSendBuffer()
 
 BOOL CPSock::SendMessageA()
 {
-	char temp[256];
+	#ifdef _PACKET_DEBUG
+	char temp[256] = { 0, };
+	#endif 
 
 	if (Sock <= 0)
 	{

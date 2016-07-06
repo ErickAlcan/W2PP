@@ -408,7 +408,7 @@ void CMob::SelectTargetFromEnemyList(void)
 			EnemyList[i] = 0;
 			continue;
 		}
-		if (pMob[myenemy].MOB.BaseScore.Level > MAX_LEVEL && pMob[myenemy].MOB.Merchant & 1 == 0)
+		if (pMob[myenemy].MOB.BaseScore.Level > MAX_LEVEL && ((pMob[myenemy].MOB.Merchant & 1) == 0))
 		{
 			EnemyList[i] = 0;
 			continue;

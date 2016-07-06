@@ -1232,7 +1232,7 @@ int BASE_GetDamage(int dam, int ac, int combat)
 	if(tdam <= 0)
 		tdam = 1;
 
-	return tdam;
+	return (int)tdam;
 }
 
 void BASE_GetLanguage(char *str, int idx)
@@ -2015,7 +2015,7 @@ int BASE_GetBonusItemAbility(STRUCT_ITEM *item, unsigned char Type)
 
 	int sanc = BASE_GetItemSanc(item);
 
-	if(sanc == 9 && nPos & 0xF00 != 0)
+	if(sanc == 9 && (nPos & 0xF00) != 0)
 		sanc = 10;
 
 	if(sanc == 0)
@@ -2839,7 +2839,7 @@ int BASE_ReadItemList()
 		temp[i] = temp[i] ^ 0x5A;
 	}
 
-	int Handle = open("../../Common/ExtraItem.bin", _O_RDONLY|_O_BINARY, 0);
+	int Handle = _open("../../Common/ExtraItem.bin", _O_RDONLY|_O_BINARY, 0);
 
 	if(Handle != -1)
 	{
@@ -2849,7 +2849,7 @@ int BASE_ReadItemList()
 
 			STRUCT_ITEMLIST *item;
 
-			int sz = read(Handle, buff, sizeof(STRUCT_ITEMLIST)+2);
+			int sz = _read(Handle, buff, sizeof(STRUCT_ITEMLIST)+2);
 
 			if(sz < sizeof(STRUCT_ITEMLIST)+2) 
 				break;
@@ -2864,7 +2864,7 @@ int BASE_ReadItemList()
 			g_pItemList[idx] = *item;
 		}
 
-		close(Handle);
+		_close(Handle);
 #ifndef _DEBUG
 		for(int i = 0; i < size; i++)
 		{ 
@@ -2888,7 +2888,7 @@ int BASE_ReadItemList()
 
 void BASE_SpaceToUnderBar(char *szStr)
 {
-	for(int i = 0; i < strlen(szStr); i++)
+	for(unsigned int i = 0; i < strlen(szStr); i++)
 	{
 		if(szStr[i] == ' ')
 			szStr[i] = '_';
@@ -2990,50 +2990,50 @@ void BASE_GetCurrentScore(STRUCT_MOB & MOB, STRUCT_AFFECT *Affect, STRUCT_MOBEXT
 			if (Type == 29 && extra->ClassMaster != MORTAL && extra->ClassMaster != ARCH)//Soul
 			{
 				if (extra->Soul == SOUL_I)
-					bInt *= 2.2;
+					bInt = (int)(bInt * 2.2f);
 
 				if (extra->Soul == SOUL_C)
-					bCon *= 2.2;
+					bCon = (int)(bCon * 2.2f);
 
 				else if (extra->Soul == SOUL_FI)
-					bInt *= 1.40;
+					bInt = (int)(bInt * 1.40f);
 
 				else if (extra->Soul == SOUL_FC)
-					bCon *= 1.40;
+					bCon = (int)(bCon * 1.40f);
 
 
 				else if (extra->Soul == SOUL_IF)
-					bInt *= 1.80;
+					bInt = (int)(bInt * 1.80f);
 
 				else if (extra->Soul == SOUL_ID)
-					bInt *= 1.80;
+					bInt = (int)(bInt * 1.80f);
 
 
 				else if (extra->Soul == SOUL_IC)
 				{
-					bInt *= 1.80;
-					bCon *= 1.40;
+					bInt = (int)(bInt * 1.80f);
+					bCon = (int)(bCon * 1.40f);
 				}
 
 				else if (extra->Soul == SOUL_DI)
-					bInt *= 1.40;
+					bInt = (int)(bInt * 1.40f);
 
 				else if (extra->Soul == SOUL_DC)
-					bCon *= 1.40;
+					bCon = (int)(bCon * 1.40f);
 
 
 				else if (extra->Soul == SOUL_CF)
-					bCon *= 1.80;
+					bCon = (int)(bCon * 1.80f);
 
 
 				else if (extra->Soul == SOUL_CI)
 				{
-					bCon *= 1.80;
-					bInt *= 1.40;
+					bCon = (int)(bCon * 1.80f);
+					bInt = (int)(bInt * 1.40f);
 				}
 
 				else if (extra->Soul == SOUL_CD)
-					bCon *= 1.80;
+					bCon = (int)(bCon * 1.80f);
 			}
 
 			else if (Type == 29 && extra->ClassMaster == MORTAL && MOB.CurrentScore.Level < 369)//Soul Kibita
@@ -3042,50 +3042,50 @@ void BASE_GetCurrentScore(STRUCT_MOB & MOB, STRUCT_AFFECT *Affect, STRUCT_MOBEXT
 			else if (Type == 29 && extra->ClassMaster == MORTAL)//Soul
 			{
 				if (extra->Soul == SOUL_I)
-					bInt *= 1.8;
+					bInt = (int)(bInt * 1.8f);
 
 				if (extra->Soul == SOUL_C)
-					bCon *= 1.8;
+					bCon = (int)(bCon * 1.8f);
 
 				else if (extra->Soul == SOUL_FI)
-					bInt *= 1.40;
+					bInt = (int)(bInt * 1.40f);
 
 				else if (extra->Soul == SOUL_FC)
-					bCon *= 1.40;
+					bCon = (int)(bCon * 1.40f);
 
 
 				else if (extra->Soul == SOUL_IF)
-					bInt *= 1.60;
+					bInt = (int)(bInt * 1.60f);
 
 				else if (extra->Soul == SOUL_ID)
-					bInt *= 1.60;
+					bInt = (int)(bInt * 1.60f);
 
 
 				else if (extra->Soul == SOUL_IC)
 				{
-					bInt *= 1.60;
-					bCon *= 1.40;
+					bInt = (int)(bInt * 1.60f);
+					bCon = (int)(bCon * 1.40f);
 				}
 
 				else if (extra->Soul == SOUL_DI)
-					bInt *= 1.40;
+					bInt = (int)(bInt * 1.40f);
 
 				else if (extra->Soul == SOUL_DC)
-					bCon *= 1.40;
+					bCon = (int)(bCon * 1.40f);
 
 
 				else if (extra->Soul == SOUL_CF)
-					bCon *= 1.60;
+					bCon = (int)(bCon * 1.60f);
 
 
 				else if (extra->Soul == SOUL_CI)
 				{
-					bCon *= 1.60;
-					bInt *= 1.40;
+					bCon = (int)(bCon * 1.60f);
+					bInt = (int)(bInt * 1.40f);
 				}
 
 				else if (extra->Soul == SOUL_CD)
-					bCon *= 1.60;
+					bCon = (int)(bCon * 1.60f);
 			}
 		}
 
@@ -3190,7 +3190,7 @@ void BASE_GetCurrentScore(STRUCT_MOB & MOB, STRUCT_AFFECT *Affect, STRUCT_MOBEXT
 		//Armadura Crítica
 		if(MOB.LearnedSkill & (1 << 15))
 		{
-			MOB.CurrentScore.Ac *= 1.1;
+			MOB.CurrentScore.Ac = (int)(MOB.CurrentScore.Ac * 1.1f);
 
 			Critical += 24;
 		}
@@ -3206,7 +3206,7 @@ void BASE_GetCurrentScore(STRUCT_MOB & MOB, STRUCT_AFFECT *Affect, STRUCT_MOBEXT
 		MOB.CurrentScore.MaxHp = MAX_HP;
 
 	else
-		MOB.CurrentScore.MaxHp = maxHP;
+		MOB.CurrentScore.MaxHp = (int)maxHP;
 	
 	int MpAdd = BASE_GetMobAbility(&MOB, EF_MPADD) + BASE_GetMobAbility(&MOB, EF_MPADD2) + 100;
 
@@ -3217,7 +3217,7 @@ void BASE_GetCurrentScore(STRUCT_MOB & MOB, STRUCT_AFFECT *Affect, STRUCT_MOBEXT
 		MOB.CurrentScore.MaxMp = MAX_MP;
 
 	else
-		MOB.CurrentScore.MaxMp = maxMP;
+		MOB.CurrentScore.MaxMp = (int)maxMP;
 
 	if ((MOB.Equip[0].sIndex >= 20 && MOB.Equip[0].sIndex < 30 || MOB.Equip[0].sIndex == 32))
 		MOB.Equip[0].sIndex = extra->ClassMaster == MORTAL ? extra->MortalFace : extra->MortalFace + 5 + MOB.Class;
@@ -3291,13 +3291,13 @@ void BASE_GetCurrentScore(STRUCT_MOB & MOB, STRUCT_AFFECT *Affect, STRUCT_MOBEXT
 		}
 		else if(Type == 5)
 		{
-			float fValue = (100 - Value) / 100.0;
-			MOB.CurrentScore.Dex *= fValue;
+			float fValue = (100 - Value) / 100.0f;
+			MOB.CurrentScore.Dex = (short)(MOB.CurrentScore.Dex * fValue);
 		}
 		else if(Type == 6)
 		{
-			float fvalue = (Value + 100) / 100.0;
-			MOB.CurrentScore.Dex *= fvalue;
+			float fValue = (Value + 100) / 100.0f;
+			MOB.CurrentScore.Dex = (short)(MOB.CurrentScore.Dex * fValue);
 		}
 		else if(Type == 7)
 		{
@@ -3344,9 +3344,9 @@ void BASE_GetCurrentScore(STRUCT_MOB & MOB, STRUCT_AFFECT *Affect, STRUCT_MOBEXT
 		}
 		else if(Type == 12)
 		{
-			float fvalue = (100 - Value) / 100.0;
+			float fvalue = (100 - Value) / 100.0f;
 
-			MOB.CurrentScore.Ac *= fvalue;
+			MOB.CurrentScore.Ac = (int)(MOB.CurrentScore.Ac * fvalue);
 		}
 		else if(Type == 13)
 		{
@@ -3560,174 +3560,174 @@ void BASE_GetCurrentScore(STRUCT_MOB & MOB, STRUCT_AFFECT *Affect, STRUCT_MOBEXT
 		else if (Type == 29 && extra->ClassMaster != MORTAL)//Soul
 		{
 			if (extra->Soul == SOUL_F)
-				MOB.CurrentScore.Str *= 2.2;
+				MOB.CurrentScore.Str = (int)(MOB.CurrentScore.Str * 2.2f);
 
 			else if (extra->Soul == SOUL_I)
-				MOB.CurrentScore.Int *= 2.2;
+				MOB.CurrentScore.Int = (int)(MOB.CurrentScore.Int * 2.2f);
 
 			else if (extra->Soul == SOUL_D)
-				MOB.CurrentScore.Dex *= 2.2;
+				MOB.CurrentScore.Dex = (int)(MOB.CurrentScore.Dex * 2.2f);
 
 			else if (extra->Soul == SOUL_C)
-				MOB.CurrentScore.Con *= 2.2;
+				MOB.CurrentScore.Con = (int)(MOB.CurrentScore.Con * 2.2f);
 			
 			else if (extra->Soul == SOUL_FI)
 			{
-				MOB.CurrentScore.Str *= 1.80;
-				MOB.CurrentScore.Int *= 1.40;
+				MOB.CurrentScore.Str = (int)(MOB.CurrentScore.Str * 1.80f);
+				MOB.CurrentScore.Int = (int)(MOB.CurrentScore.Int * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_FD)
 			{
-				MOB.CurrentScore.Str *= 1.80;
-				MOB.CurrentScore.Dex *= 1.40;
+				MOB.CurrentScore.Str = (int)(MOB.CurrentScore.Str * 1.80f);
+				MOB.CurrentScore.Dex = (int)(MOB.CurrentScore.Dex * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_FC)
 			{
-				MOB.CurrentScore.Str *= 1.80;
-				MOB.CurrentScore.Con *= 1.40;
+				MOB.CurrentScore.Str = (int)(MOB.CurrentScore.Str * 1.80f);
+				MOB.CurrentScore.Con = (int)(MOB.CurrentScore.Con * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_IF)
 			{
-				MOB.CurrentScore.Int *= 1.80;
-				MOB.CurrentScore.Str *= 1.40;
+				MOB.CurrentScore.Int = (int)(MOB.CurrentScore.Int * 1.80f);
+				MOB.CurrentScore.Str = (int)(MOB.CurrentScore.Str * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_ID)
 			{
-				MOB.CurrentScore.Int *= 1.80;
-				MOB.CurrentScore.Dex *= 1.40;
+				MOB.CurrentScore.Int = (int)(MOB.CurrentScore.Int * 1.80f);
+				MOB.CurrentScore.Dex = (int)(MOB.CurrentScore.Dex * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_IC)
 			{
-				MOB.CurrentScore.Int *= 1.80;
-				MOB.CurrentScore.Con *= 1.40;
+				MOB.CurrentScore.Int = (int)(MOB.CurrentScore.Int * 1.80f);
+				MOB.CurrentScore.Con = (int)(MOB.CurrentScore.Con * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_DF)
 			{
-				MOB.CurrentScore.Dex *= 1.80;
-				MOB.CurrentScore.Str *= 1.40;
+				MOB.CurrentScore.Dex = (int)(MOB.CurrentScore.Dex * 1.80f);
+				MOB.CurrentScore.Str = (int)(MOB.CurrentScore.Str * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_DI)
 			{
-				MOB.CurrentScore.Dex *= 1.80;
-				MOB.CurrentScore.Int *= 1.40;
+				MOB.CurrentScore.Dex = (int)(MOB.CurrentScore.Dex * 1.80f);
+				MOB.CurrentScore.Int = (int)(MOB.CurrentScore.Int * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_DC)
 			{
-				MOB.CurrentScore.Dex *= 1.80;
-				MOB.CurrentScore.Con *= 1.40;
+				MOB.CurrentScore.Dex = (int)(MOB.CurrentScore.Dex * 1.80f);
+				MOB.CurrentScore.Con = (int)(MOB.CurrentScore.Con * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_CF)
 			{
-				MOB.CurrentScore.Con *= 1.80;
-				MOB.CurrentScore.Str *= 1.40;
+				MOB.CurrentScore.Con = (int)(MOB.CurrentScore.Con * 1.80f);
+				MOB.CurrentScore.Str = (int)(MOB.CurrentScore.Str * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_CI)
 			{
-				MOB.CurrentScore.Con *= 1.80;
-				MOB.CurrentScore.Int *= 1.40;
+				MOB.CurrentScore.Con = (int)(MOB.CurrentScore.Con * 1.80f);
+				MOB.CurrentScore.Int = (int)(MOB.CurrentScore.Int * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_CD)
 			{
-				MOB.CurrentScore.Con *= 1.80;
-				MOB.CurrentScore.Dex *= 1.40;
+				MOB.CurrentScore.Con = (int)(MOB.CurrentScore.Con * 1.80f);
+				MOB.CurrentScore.Dex = (int)(MOB.CurrentScore.Dex * 1.40f);
 			}
 		}
 
 		else if (Type == 29 && extra->ClassMaster == MORTAL)//Soul
 		{
 			if (extra->Soul == SOUL_F)
-				MOB.CurrentScore.Str *= 1.8;
+				MOB.CurrentScore.Str = (int)(MOB.CurrentScore.Str * 1.8f);
 
 			else if (extra->Soul == SOUL_I)
-				MOB.CurrentScore.Int *= 1.8;
+				MOB.CurrentScore.Int = (int)(MOB.CurrentScore.Int * 1.8f);
 
 			else if (extra->Soul == SOUL_D)
-				MOB.CurrentScore.Dex *= 1.8;
+				MOB.CurrentScore.Dex = (int)(MOB.CurrentScore.Dex * 1.8f);
 
 			else if (extra->Soul == SOUL_C)
-				MOB.CurrentScore.Con *= 1.8;
+				MOB.CurrentScore.Con = (int)(MOB.CurrentScore.Con * 1.8f);
 			
 			else if (extra->Soul == SOUL_FI)
 			{
-				MOB.CurrentScore.Str *= 1.60;
-				MOB.CurrentScore.Int *= 1.40;
+				MOB.CurrentScore.Str = (int)(MOB.CurrentScore.Str * 1.60f);
+				MOB.CurrentScore.Int = (int)(MOB.CurrentScore.Int * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_FD)
 			{
-				MOB.CurrentScore.Str *= 1.60;
-				MOB.CurrentScore.Dex *= 1.40;
+				MOB.CurrentScore.Str = (int)(MOB.CurrentScore.Str * 1.60f);
+				MOB.CurrentScore.Dex = (int)(MOB.CurrentScore.Dex * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_FC)
 			{
-				MOB.CurrentScore.Str *= 1.60;
-				MOB.CurrentScore.Con *= 1.40;
+				MOB.CurrentScore.Str = (int)(MOB.CurrentScore.Str * 1.60f);
+				MOB.CurrentScore.Con = (int)(MOB.CurrentScore.Con * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_IF)
 			{
-				MOB.CurrentScore.Int *= 1.60;
-				MOB.CurrentScore.Str *= 1.40;
+				MOB.CurrentScore.Int = (int)(MOB.CurrentScore.Int * 1.60f);
+				MOB.CurrentScore.Str = (int)(MOB.CurrentScore.Str * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_ID)
 			{
-				MOB.CurrentScore.Int *= 1.60;
-				MOB.CurrentScore.Dex *= 1.40;
+				MOB.CurrentScore.Int = (int)(MOB.CurrentScore.Int * 1.60f);
+				MOB.CurrentScore.Dex = (int)(MOB.CurrentScore.Dex * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_IC)
 			{
-				MOB.CurrentScore.Int *= 1.60;
-				MOB.CurrentScore.Con *= 1.40;
+				MOB.CurrentScore.Int = (int)(MOB.CurrentScore.Int * 1.60f);
+				MOB.CurrentScore.Con = (int)(MOB.CurrentScore.Con * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_DF)
 			{
-				MOB.CurrentScore.Dex *= 1.60;
-				MOB.CurrentScore.Str *= 1.40;
+				MOB.CurrentScore.Dex = (int)(MOB.CurrentScore.Dex * 1.60f);
+				MOB.CurrentScore.Str = (int)(MOB.CurrentScore.Str * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_DI)
 			{
-				MOB.CurrentScore.Dex *= 1.60;
-				MOB.CurrentScore.Int *= 1.40;
+				MOB.CurrentScore.Dex = (int)(MOB.CurrentScore.Dex * 1.60f);
+				MOB.CurrentScore.Int = (int)(MOB.CurrentScore.Int * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_DC)
 			{
-				MOB.CurrentScore.Dex *= 1.60;
-				MOB.CurrentScore.Con *= 1.40;
+				MOB.CurrentScore.Dex = (int)(MOB.CurrentScore.Dex * 1.60f);
+				MOB.CurrentScore.Con = (int)(MOB.CurrentScore.Con * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_CF)
 			{
-				MOB.CurrentScore.Con *= 1.60;
-				MOB.CurrentScore.Str *= 1.40;
+				MOB.CurrentScore.Con = (int)(MOB.CurrentScore.Con * 1.60f);
+				MOB.CurrentScore.Str = (int)(MOB.CurrentScore.Str * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_CI)
 			{
-				MOB.CurrentScore.Con *= 1.60;
-				MOB.CurrentScore.Int *= 1.40;
+				MOB.CurrentScore.Con = (int)(MOB.CurrentScore.Con * 1.60f);
+				MOB.CurrentScore.Int = (int)(MOB.CurrentScore.Int * 1.40f);
 			}
 
 			else if (extra->Soul == SOUL_CD)
 			{
-				MOB.CurrentScore.Con *= 1.60;
-				MOB.CurrentScore.Dex *= 1.40;
+				MOB.CurrentScore.Con = (int)(MOB.CurrentScore.Con * 1.60f);
+				MOB.CurrentScore.Dex = (int)(MOB.CurrentScore.Dex * 1.40f);
 			}
 		}
 
@@ -5453,7 +5453,7 @@ int BASE_GetDoubleCritical(STRUCT_MOB *mob, unsigned short *sProgress, unsigned 
 
 	if(*cProgress >= 1024)
 	{	
-		if(*cProgress & 0x3FF < 0)
+		if((*cProgress & 0x3FF) < 0)
 			*cProgress = ((*cProgress & 0x3FF) - 1 | 0xFC00) + 1;		
 	}
 
@@ -6041,7 +6041,7 @@ void BASE_InitializeSkill()
 		temp.Act[6] = 0;
 		temp.Act[7] = 0;
 
-		sscanf(skilldata, "%d.%d.%d.%d.%d.%d", &temp.Act[0], &temp.Act[1], &temp.Act[2], &temp.Act[3], &temp.Act[4], &temp.Act[5]);
+		sscanf(skilldata, "%hhd.%hhd.%hhd.%hhd.%hhd.%hhd", &temp.Act[0], &temp.Act[1], &temp.Act[2], &temp.Act[3], &temp.Act[4], &temp.Act[5]);
 
 		g_pSpell[Index] = temp;
 	 }
@@ -6448,7 +6448,7 @@ int BASE_GetWeekNumber()
 
 	unsigned int week = 86400;
 
-	int ret = now / week - 3;
+	int ret = (int)(now / week - 3);
 
 	return ret;
 }

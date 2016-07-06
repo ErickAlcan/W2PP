@@ -17,7 +17,6 @@
 #include "SendFunc.h"
 #include "ProcessClientMessage.h"
 #include "ProcessDBMessage.h"
-#include "CEncampment.h"
 #include "CWarTower.h"
 
 void ProcessSecTimer()
@@ -1331,7 +1330,7 @@ lbl_PST1:
 			GenerateMob(pMobMerc[k].GenerateIndex, 0, 0);
 	}
 
-	CEncampment::ProcessSecTimer();
+	// CEncampment::ProcessSecTimer();
 
 	int Sec6 = SecCounter % 6;
 
@@ -1628,13 +1627,13 @@ lbl_PST1:
 
 			if (village >= 0 && village <= 4 && Target < MAX_USER && index >= MAX_USER)
 			{
-				if (mapatt & 4 == 0 && mapatt & 0x40 == 0)
+				if ((mapatt & 4) == 0 && (mapatt & 0x40) == 0)
 				{
 					FILE *fpp = NULL;
 
 					fpp = fopen("AttackDieTeste.txt", "a+");
 
-					fprintf(fpp, "nome:%s x:%d y:%d conn:%d mode:%d atname:%d atx:%d aty:%d idx:%d\n", pMob[Target].MOB.MobName, pMob[Target].TargetX, pMob[Target].TargetY, Target, pUser[Target].Mode, pMob[index].MOB.MobName, pMob[index].TargetX, pMob[index].TargetY, index);
+					fprintf(fpp, "nome:%s x:%d y:%d conn:%d mode:%d atname:%s atx:%d aty:%d idx:%d\n", pMob[Target].MOB.MobName, pMob[Target].TargetX, pMob[Target].TargetY, Target, pUser[Target].Mode, pMob[index].MOB.MobName, pMob[index].TargetX, pMob[index].TargetY, index);
 
 					fclose(fpp);
 				}
@@ -1742,7 +1741,7 @@ lbl_PST1:
 				{
 					sm.Dam[0].Damage = -3;
 
-					if (pMob[Target].MOB.Rsv & 0x200 != 0 && rd < 100)
+					if ((pMob[Target].MOB.Rsv & 0x200) != 0 && rd < 100)
 						sm.Dam[0].Damage = -4;
 				}
 
@@ -2025,7 +2024,7 @@ void ProcessMinTimer()
 
 		else if (NewbieEventServer == 1 && ServerIndex != NewbieServerID)
 		{
-			CEncampment::ChangeNewBieChannel();
+			// CEncampment::ChangeNewBieChannel();
 
 			for (int i = 1; i < MAX_USER; i++)
 			{

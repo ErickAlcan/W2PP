@@ -18,7 +18,6 @@
 #include "ProcessClientMessage.h"
 #include "ProcessDBMessage.h"
 #include "CReadFiles.h"
-#include "CEncampment.h"
 #include "CWarTower.h"
 
 #pragma region Defines
@@ -2261,7 +2260,7 @@ void SetItemBonus(STRUCT_ITEM *Dest, int Level, int a3, int DropBonus)
     {
       case 0x2B:
         Dest->stEffect[0].cEffect = 43;
-		Dest->stEffect[0].cValue = g_pItemList[ItemId].stEffect[i].sValue;
+		Dest->stEffect[0].cValue = (unsigned char)g_pItemList[ItemId].stEffect[i].sValue;
         break;
       case 0x3D:
         Dest->stEffect[0].cEffect = 61;
@@ -3608,7 +3607,7 @@ BOOL WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 	CurrentTime = timeGetTime();
 
 	CReadFiles::CReadFiles();
-	CEncampment::ReadCamp();
+	// CEncampment::ReadCamp();
 	CCastleZakum::ReadCastleQuest();
 
 	SetTimer(hWndMain, TIMER_SEC, 500, NULL);
@@ -3685,7 +3684,7 @@ void WriteWeapon(FILE *fp)
 			else
 				strcpy(temp, "#FF00FF");
 
-			fprintf(fp, "<td width=140 height=16 bgcolor='%s'><a href=\javascript:f_show(%d); title='%d'><font color='%s'>%16.16s</font></a></td>",
+			fprintf(fp, "<td width=140 height=16 bgcolor='%s'><a href=\"javascript:f_show(%d); title='%d'><font color='%s'>%16.16s</font></a></td>",
 				&dest, item, item, &temp, &g_pItemList[item].Name);
 		}
 		fprintf(fp, "</tr>\n");
@@ -4038,7 +4037,7 @@ LONG APIENTRY MainWndProc(HWND hWnd, UINT message, UINT wParam, LONG lParam)
 	case WM_CREATE:
 	{
 		HMENU hMenu, hSubMenu;
-		HICON hIcon, hIconSm;
+		// HICON hIcon, hIconSm;
 
 		hMenu = CreateMenu();
 
@@ -4679,7 +4678,7 @@ LABEL_59:
 
 			AffectValue /= 10;
 
-			int HpLose = (double)(100 - AffectValue) / 100.0;
+			int HpLose = (int)((100 - AffectValue) / 100.0);
 			int Perda = 1000;
 
 			if (idx >= MAX_USER)
@@ -4687,7 +4686,7 @@ LABEL_59:
 
 			int Perdamax = Hp - Perda;
 
-			Hp = float((double)Hp * HpLose);
+			Hp = (int)((double)Hp * HpLose);
 
 			if (Hp < (signed int)Perdamax)
 				Hp = Perdamax;
@@ -6779,7 +6778,7 @@ int  GetUserByName(char *name)
 	{
 		char *tname = name + 1;
 
-		strupr(tname);
+		_strupr(tname);
 
 		for (int i = 1; i < MAX_USER; i++)
 		{
@@ -8276,7 +8275,7 @@ BOOL SetAffect(int conn, int skillnum, int time, int Level)
 	if(sType == 1 || sType == 3 || sType == 10)
 		sTime = 4;
 
-	if (sType == sAffectType && sTime > pMob[conn].Affect[EmptyAffect].Time)
+	if (sType == sAffectType && (unsigned int)sTime > pMob[conn].Affect[EmptyAffect].Time)
 		pMob[conn].Affect[EmptyAffect].Time = sTime;
 
 	else
@@ -8986,7 +8985,7 @@ void MobAttack(int attacker, MSG_Attack sm)
 			{
 				sm.Dam[i].Damage = -3;
 
-				if (pMob[Target].MOB.Rsv & 0x200 != 0 && rd < 100)
+				if ((pMob[Target].MOB.Rsv & 0x200) != 0 && rd < 100)
 					sm.Dam[i].Damage = -4;
 			}
 
@@ -9047,7 +9046,7 @@ void MobAttack(int attacker, MSG_Attack sm)
 						setDam = sm.Dam[i].Damage;
 
 					dam = setDam;
-					exp = pMob[Target].MOB.Exp * dam / pMob[Target].MOB.CurrentScore.MaxHp;
+					exp = (int)(pMob[Target].MOB.Exp * dam / pMob[Target].MOB.CurrentScore.MaxHp);
 
 					if (pMob[Summoner].MOB.CurrentScore.Level == pMob[attacker].MOB.CurrentScore.Level)
 					{
@@ -9318,7 +9317,7 @@ int  ParseMobMercString(int Num, char *str)
 	if (strlen(str2) > 80)
 		return FALSE;
 
-	strupr(str1);
+	_strupr(str1);
 
 	if (!strcmp(str1, "MOBNAME:"))
 		strncpy(pMobMerc[Num].MobName, str2, NAME_LENGTH);

@@ -1479,7 +1479,7 @@ void SendAddParty(int Leaderconn, int conn, int PartyID)
 	sm_cap.Hp = pMob[conn].MOB.CurrentScore.Hp > 32000 ? ((pMob[conn].MOB.CurrentScore.Hp+1) / 100) : pMob[conn].MOB.CurrentScore.Hp;
 
 	sm_cap.PartyID = conn;//Check:
-	sm_cap.Target = 52428;
+	sm_cap.Target = (short)52428;
 
 	strcpy(sm_cap.MobName, pMob[conn].MOB.MobName);
 
@@ -1785,7 +1785,7 @@ void SendAffect(int conn)
 			sm.Affect[i].Type = pMob[conn].Affect[i].Type;
 			sm.Affect[i].Value = pMob[conn].Affect[i].Value;
 			sm.Affect[i].Level = pMob[conn].Affect[i].Level;
-			sm.Affect[i].Time = ((pMob[conn].extra.DivineEnd - now) / 60 / 60 / 24 * AFFECT_1D) - 1;
+			sm.Affect[i].Time = (int)(((pMob[conn].extra.DivineEnd - now) / 60 / 60 / 24 * AFFECT_1D) - 1);
 		}
 		else if (pMob[conn].Affect[i].Type >= 1)
 		{

@@ -52,7 +52,7 @@ void Exec_MSG_Challange(int conn, char *pMsg)
 
 							pMob[GuildImpostoID[zone]].MOB.Exp = 0;
 
-							pMob[conn].MOB.Coin = fGold;
+							pMob[conn].MOB.Coin = (int)fGold;
 
 							SendEtc(conn);
 
@@ -76,7 +76,7 @@ void Exec_MSG_Challange(int conn, char *pMsg)
 
 						int i = 0;
 
-						for(i = Coin; i > 0; i--)
+						for(i = (int)Coin; i > 0; i--)
 						{
 							if(PutItem(conn, &Item) == 0)
 								return;

@@ -690,21 +690,21 @@ void ProcessDBMessage(char *Msg)
 											 m->mob.Equip[0].stEffect[1].cEffect = 98;
 											 m->mob.Equip[0].stEffect[1].cValue = 0;
 											 m->mob.Equip[0].stEffect[2].cEffect = 106;
-											 m->mob.Equip[0].stEffect[2].cValue = m->mob.Equip[0].sIndex;
+											 m->mob.Equip[0].stEffect[2].cValue = (unsigned char)m->mob.Equip[0].sIndex;
 										 }
 										 else if (m->mobExtra.ClassMaster == ARCH)
 										 {
 											 m->mob.Equip[0].stEffect[1].cEffect = 98;
 											 m->mob.Equip[0].stEffect[1].cValue = 0;
 											 m->mob.Equip[0].stEffect[2].cEffect = 106;
-											 m->mob.Equip[0].stEffect[2].cValue = m->mob.Equip[0].sIndex;
+											 m->mob.Equip[0].stEffect[2].cValue = (unsigned char)m->mob.Equip[0].sIndex;
 										 }
 										 else if (m->mobExtra.ClassMaster == CELESTIAL || m->mobExtra.ClassMaster == SCELESTIAL || m->mobExtra.ClassMaster == CELESTIALCS)
 										 {
 											 m->mob.Equip[0].stEffect[1].cEffect = 98;
 											 m->mob.Equip[0].stEffect[1].cValue = 3;
 											 m->mob.Equip[0].stEffect[2].cEffect = 106;
-											 m->mob.Equip[0].stEffect[2].cValue = m->mob.Equip[0].sIndex;
+											 m->mob.Equip[0].stEffect[2].cValue = (unsigned char)m->mob.Equip[0].sIndex;
 										 }
 
 										 pUser[conn].Donate = m->Donate;
@@ -1202,7 +1202,7 @@ void ProcessDBMessage(char *Msg)
 
 								  if (pUser[conn].Mode < USER_SELCHAR)
 								  {
-									  char ItemCode[256];
+									  // char ItemCode[256];
 
 									  sprintf(temp, "tra,%s", pUser[conn].AccountName);
 									  Log(temp, "_fail_play_", pUser[conn].IP);
@@ -1212,7 +1212,7 @@ void ProcessDBMessage(char *Msg)
 
 								  if (strcmp(pUser[conn].AccountName, m->Account) != 0)
 								  {
-									  char ItemCode[256];
+									  // char ItemCode[256];
 
 									  sprintf(temp, "tra,%s", pUser[conn].AccountName);
 									  Log(temp, "_fail_name_", pUser[conn].IP);

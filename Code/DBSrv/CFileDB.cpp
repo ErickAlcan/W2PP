@@ -11,7 +11,6 @@
 #include "CUser.h"
 #include "Server.h"
 #include "CRanking.h"
-#include "CActivePinCode.h"
 #include "CReadFiles.h"
 #include "..\Basedef.h"
 
@@ -130,7 +129,7 @@ int CFileDB::UpdateAccount(char *id, char *pass)
 
 	strncpy(check, id, ACCOUNTNAME_LENGTH);
 
-	strupr(check);
+	_strupr(check);
 
 	if(check[0] == 'C' && check[1] == 'O' && check[2] == 'M' && check[3] >= '0' && check[3] <= '9' && check[4] == 0)
 		return FALSE;
@@ -198,7 +197,7 @@ int ProcessRecord(int conn, char * str)
 	time(&now);
 	when = *localtime(&now);
 
-    sprintf(file,"RC%4.4d_%2.2d_%2.2d_%2.2d_%2.2d_%2d.txt", when.tm_year-100, when.tm_mon+1, when.tm_mday, when.tm_hour, when.tm_min, when.tm_sec, conn);
+    sprintf(file,"RC%4.4d_%2.2d_%2.2d_%2.2d_%2.2d_%d2.2d_%2d.txt", when.tm_year-100, when.tm_mon+1, when.tm_mday, when.tm_hour, when.tm_min, when.tm_sec, conn);
 	
 	char filetemp[236];
    
@@ -293,8 +292,8 @@ int CFileDB::ProcessMessage(char *Msg, int conn)
 			mob->MobName[NAME_LENGTH-1] = 0;
 			mob->MobName[NAME_LENGTH-2] = 0;
 
-			strupr(slotname);
-			strupr(m->OldName);
+			_strupr(slotname);
+			_strupr(m->OldName);
 
 			if(strcmp(slotname, m->OldName))
 			{
@@ -439,7 +438,7 @@ int CFileDB::ProcessMessage(char *Msg, int conn)
 
 			int myguild = m->Guild;
 
-			char temp[256];
+			// char temp[256];
 
 
 			if(myguild <= 0 || myguild >= 65536)
@@ -495,7 +494,7 @@ int CFileDB::ProcessMessage(char *Msg, int conn)
 
 			int Idx = GetIndex(conn, m->ID);
 
-			strupr(m->AccountInfo.AccountName);
+			_strupr(m->AccountInfo.AccountName);
 
 			char *accname = m->AccountInfo.AccountName;
 
@@ -523,7 +522,7 @@ int CFileDB::ProcessMessage(char *Msg, int conn)
 				return TRUE;				
 			}
 
-			strupr(file->Info.AccountName);
+			_strupr(file->Info.AccountName);
 
 			AddAccountList(Idx);
 
@@ -594,7 +593,7 @@ int CFileDB::ProcessMessage(char *Msg, int conn)
 		{
 			MSG_AccountLogin *m = (MSG_AccountLogin*)Msg;
 
-			strupr(m->AccountName);
+			_strupr(m->AccountName);
 
 			char *ac = m->AccountName;
 
@@ -684,7 +683,7 @@ int CFileDB::ProcessMessage(char *Msg, int conn)
 				break;
 			}
 
-			strupr(file.Info.AccountName);
+			_strupr(file.Info.AccountName);
 
 			int right = -1;
 			int left = -1;
@@ -874,7 +873,7 @@ int CFileDB::ProcessMessage(char *Msg, int conn)
 
 			strncpy(check, m->MobName, NAME_LENGTH);
 
-			strupr(check);
+			_strupr(check);
 
 			if(strcmp(check, "KING") == 0 || strcmp(check, "KINGDOM") == 0 || strcmp(check, "GRITAR") == 0 || strcmp(check, "RELO") == 0)
 			{
@@ -1125,7 +1124,7 @@ int CFileDB::ProcessMessage(char *Msg, int conn)
 			{
 				char temp[1024];
 
-				sprintf(temp, "err,savemob1 %d %d %d %s %s",  m->ID, Slot, m->Slot, m->AccountName);
+				sprintf(temp, "err,savemob1 %d %d %d %s %s",  m->ID, Slot, m->Slot, acc, m->AccountName);
 
 				Log(temp, "-system", 0);
 
@@ -1136,7 +1135,7 @@ int CFileDB::ProcessMessage(char *Msg, int conn)
 			{
 				char temp[1024];
 
-				sprintf(temp, "err,savemob2 %d %d %d %s %s",  m->ID, Slot, m->Slot, m->AccountName);
+				sprintf(temp, "err,savemob2 %d %d %d %s %s",  m->ID, Slot, m->Slot, acc, m->AccountName);
 
 				Log(temp, "-system", 0);
 			}
@@ -1145,7 +1144,7 @@ int CFileDB::ProcessMessage(char *Msg, int conn)
 			{
 				char temp[1024];
 
-				sprintf(temp, "err,savemob3 %d %d %d %s %s",  m->ID, Slot, m->Slot, m->AccountName);
+				sprintf(temp, "err,savemob3 %d %d %d %s %s",  m->ID, Slot, m->Slot, acc, m->AccountName);
 
 				Log(temp, "-system", 0);
 
@@ -1438,7 +1437,7 @@ int CFileDB::ProcessMessage(char *Msg, int conn)
 
 		strncpy(check, m->MobName, NAME_LENGTH);
 
-		strupr(check);
+		_strupr(check);
 
 		if(strcmp(check, "KING") == 0 || strcmp(check, "KINGDOM") == 0 || strcmp(check, "GRITAR") == 0 || strcmp(check, "RELO") == 0)
 		{
@@ -1709,8 +1708,8 @@ int CFileDB::ProcessMessage(char *Msg, int conn)
 
 		file.extra.QuestInfo.Arch.MortalSlot = -1;
 
-		write(Handle, &file, sizeof(STRUCT_CAPSULE));
-		close(Handle);
+		_write(Handle, &file, sizeof(STRUCT_CAPSULE));
+		_close(Handle);
 
 		memset(pAccountList[Idx].File.ShortSkill[Slot], 0, 16);
 
@@ -2014,7 +2013,7 @@ int CFileDB::ProcessMessage(char *Msg, int conn)
 
 			if (m->RankInfo.Value > thisRank->Value && m->RankInfo.ClassMaster <= thisRank->ClassMaster || m->RankInfo.ClassMaster > thisRank->ClassMaster)
 			{
-				newRankId = rankingSystem.increaseRankingElementValue(rankId, m->RankInfo.Value, m->RankInfo.ClassMaster);
+				newRankId = rankingSystem.increaseRankingElementValue(rankId, (int)m->RankInfo.Value, m->RankInfo.ClassMaster);
 
 				/* Update all the other players that were affected by this change */
 				rankingSystem.sendUpdateRangeRank(rankId, newRankId);
@@ -2043,7 +2042,7 @@ int CFileDB::ProcessMessage(char *Msg, int conn)
 	{
 		MSG_DBActivatePinCode *m = (MSG_DBActivatePinCode*)Msg;
 
-		CActivePinCode::ProcessMessage(Msg, conn);
+		// CActivePinCode::ProcessMessage(Msg, conn);
 
 	} break;
 
@@ -2221,7 +2220,7 @@ int CFileDB::CreateCharacter(char *ac, char *ch)
 
 	strncpy(check, ac, ACCOUNTNAME_LENGTH);
 
-	strupr(check);
+	_strupr(check);
 
 	if(check[0] == 'C' && check[1] == 'O' && check[2] == 'M' && check[3] >= '0' && check[3] <= '9' && check[4] == 0)
 		return FALSE;
@@ -2230,7 +2229,7 @@ int CFileDB::CreateCharacter(char *ac, char *ch)
 
 	strncpy(check, ch, NAME_LENGTH);
 
-	strupr(check);
+	_strupr(check);
 
 	if(check[0] == 'C' && check[1] == 'O' && check[2] == 'M' && check[3] >= '0' && check[3] <= '9' && check[4] == 0)
 		return FALSE;
@@ -2276,8 +2275,8 @@ int CFileDB::CreateCharacter(char *ac, char *ch)
          return FALSE;
 	}
 
-	write(Handle, ac, ACCOUNTNAME_LENGTH);
-	close(Handle);
+	_write(Handle, ac, ACCOUNTNAME_LENGTH);
+	_close(Handle);
 
 	return TRUE;
 }
@@ -2288,7 +2287,7 @@ int CFileDB::DeleteCharacter(char *ch, char *account)
 
 	strncpy(check, ch, ACCOUNTNAME_LENGTH);
 
-	strupr(check);
+	_strupr(check);
 
 	if(check[0] == 'C' && check[1] == 'O' && check[2] == 'M' && check[3] >= '0' && check[3] <= '9' && check[4] == 0)
 		return FALSE;
@@ -2377,7 +2376,7 @@ int CFileDB::DBWriteAccount(STRUCT_ACCOUNTFILE *account)
 
 	strncpy(check, accname, ACCOUNTNAME_LENGTH);
 
-	 strupr(check);
+	 _strupr(check);
 
 	if(check[0] == 'C' && check[1] == 'O' && check[2] == 'M' && check[3] >= '0' && check[3] <= '9' && check[4] == 0)
 		return FALSE;
@@ -2418,7 +2417,7 @@ int CFileDB::DBWriteAccount(STRUCT_ACCOUNTFILE *account)
 	{
 		Log("err,writeaccount lseek fail", accname, 0);
 
-		close(Handle); 
+		_close(Handle); 
 
 		return FALSE;
 	}
@@ -2427,7 +2426,7 @@ int CFileDB::DBWriteAccount(STRUCT_ACCOUNTFILE *account)
 
 	if(ret == -1)
 	{
-		close(Handle);
+		_close(Handle);
 
 		Log("CreateAccount write fail", accname, 0);
 
@@ -2458,7 +2457,7 @@ int CFileDB::DBExportAccount(STRUCT_ACCOUNTFILE *file)
 
 	strncpy(check, accname, 16);
 
-	strupr(check);
+	_strupr(check);
 
 	if(check[0] == 'C' && check[1] == 'O' && check[2] == 'M' && check[3] >= '0' && check[3] <= '9' && check[4] == 0)
 		return FALSE;
@@ -2508,7 +2507,7 @@ int CFileDB::DBReadAccount(STRUCT_ACCOUNTFILE *file)
 
 	strncpy(check, file->Info.AccountName, ACCOUNTNAME_LENGTH);
 
-	strupr(check);
+	_strupr(check);
 
 	if(check[0] == 'C' && check[1] == 'O' && check[2] == 'M' && check[3] >= '0' && check[3] <= '9' && check[4] == 0)
 		return FALSE;
@@ -2618,7 +2617,7 @@ void CFileDB::GetAccountByChar(char *acc, char *cha)
 
 	strncpy(check, cha, NAME_LENGTH);
 
-	strupr(check);
+	_strupr(check);
 
 	if(check[0] == 'C' && check[1] == 'O' && check[2] == 'M' && check[3] >= '0' && check[3] <= '9' && check[4] == 0)
 		return;

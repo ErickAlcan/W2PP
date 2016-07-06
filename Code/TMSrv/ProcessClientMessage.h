@@ -21,7 +21,6 @@
 #include "CUser.h"
 #include "CNPCGene.h"
 #include "CReadFiles.h"
-#include "CEncampment.h"
 #include "CCastleZakum.h"
 #include "CWarTower.h"
 
