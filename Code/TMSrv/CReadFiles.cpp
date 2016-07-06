@@ -78,7 +78,7 @@ void CReadFiles::ReadSancRate()
 		char str1[128];
 		char str2[128];
 		char str3[128];
-		char str4[128];
+		// char str4[128];
 
 		sscanf(temp, "%s %s %s", str1, str2, str3);
 
@@ -86,7 +86,7 @@ void CReadFiles::ReadSancRate()
 		int val2 = atoi(str2);
 		int val3 = atoi(str3);
 
-		strupr(str1);
+		_strupr(str1);
 
 		if (strcmp(str1, "PO") == 0)
 		{
@@ -288,7 +288,7 @@ void CReadFiles::ReadQuestsRate()
 		int val5 = atoi(str5);
 		int val6 = atoi(str6);
 
-		strupr(str1);
+		_strupr(str1);
 
 		if (strcmp(str1, "EXP") == 0)
 		{
@@ -376,7 +376,7 @@ void CReadFiles::ReadCompRate()
 		char str1[128];
 		char str2[128];
 		char str3[128];
-		char str4[128];
+		// char str4[128];
 
 		sscanf(temp, "%s %s %s", str1, str2, str3);
 
@@ -384,7 +384,7 @@ void CReadFiles::ReadCompRate()
 		int val2 = atoi(str2);
 		int val3 = atoi(str3);
 
-		strupr(str1);
+		_strupr(str1);
 
 		if (strcmp(str1, "EHRE") == 0)
 		{

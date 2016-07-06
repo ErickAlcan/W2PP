@@ -7,7 +7,4 @@ void ProcessMessage(char *pMsg)
 {
 	HEADER *std = (HEADER*)pMsg;
 
-	switch (std->Type)
-	{
-	}
 }

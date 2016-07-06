@@ -185,7 +185,7 @@ void CReadFiles::ImportItem()
 
 		Log(temp, "-IMPORT starting", 0);
 
-		strupr(ids);
+		_strupr(ids);
 
 		if (Index < 0 || Index >= MAX_ITEMLIST || Eff1 < 0 || Eff2 < 0 || Eff3 < 0 || Eff1 > 255 || Eff2 > 255 || Eff3 > 255)
 		{
@@ -241,7 +241,7 @@ void CReadFiles::ImportItem()
 
 		memset(&file, 0, sizeof(STRUCT_ACCOUNTFILE));
 
-		strupr(ids);
+		_strupr(ids);
 
 		memcpy(file.Info.AccountName, ids, ACCOUNTNAME_LENGTH);
 
@@ -435,7 +435,7 @@ void CReadFiles::ImportUser()
 				break;
 		}
 
-		strupr(id);
+		_strupr(id);
 
 		id[ACCOUNTNAME_LENGTH - 1] = 0;
 		id[ACCOUNTNAME_LENGTH - 2] = 0;
@@ -772,7 +772,7 @@ void CReadFiles::ImportDonate()
 
 		Log(temp, "-IMPORT DONATE starting", 0);
 
-		strupr(ids);
+		_strupr(ids);
 
 		if (Donate < 0)
 		{
@@ -817,7 +817,7 @@ void CReadFiles::ImportDonate()
 
 		memset(&file, 0, sizeof(STRUCT_ACCOUNTFILE));
 
-		strupr(ids);
+		_strupr(ids);
 
 		memcpy(file.Info.AccountName, ids, ACCOUNTNAME_LENGTH);
 
@@ -955,7 +955,7 @@ void CReadFiles::UpdateUser()
 				continue;
 			}
 
-			strupr(id);
+			_strupr(id);
 			id[ACCOUNTNAME_LENGTH - 1] = 0;
 			id[ACCOUNTNAME_LENGTH - 2] = 0;
 

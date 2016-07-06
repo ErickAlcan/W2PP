@@ -17,7 +17,6 @@
 #include "SendFunc.h"
 #include "ProcessClientMessage.h"
 #include "ProcessDBMessage.h"
-#include "CEncampment.h"
 #include "CCastleZakum.h"
 #include "CWarTower.h"
 
@@ -194,9 +193,10 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 			if (conn < MAX_USER && pMob[target].MOB.Clan != 4)
 			{
 #pragma region Distribuição da EXP
-				int MobExp = GetExpApply(pMob[conn].extra, pMob[target].MOB.Exp, pMob[conn].MOB.CurrentScore.Level, pMob[target].MOB.CurrentScore.Level);
+				int MobExp = GetExpApply(pMob[conn].extra, (int)pMob[target].MOB.Exp, pMob[conn].MOB.CurrentScore.Level, pMob[target].MOB.CurrentScore.Level);
 				int FinalExp = 0;
 
+				// TODO: Change this UNK_s to something else.
 				int UNK_1 = 30;
 				int UNK_2 = 0;
 				int UNK_3 = pMob[conn].extra.ClassMaster;
@@ -234,7 +234,7 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 						if (party > 0 && party < MAX_USER && pMob[party].MOB.CurrentScore.Hp > 0 && (tx / 128) == 9 && (pMob[party].TargetX / 128) == 9
 							&& (ty / 128) == 1 && (pMob[party].TargetY / 128) == 1)
 						{
-							isExp = GetExpApply(pMob[party].extra, pMob[target].MOB.Exp, pMob[party].MOB.CurrentScore.Level, pMob[target].MOB.CurrentScore.Level);
+							isExp = GetExpApply(pMob[party].extra, (int)pMob[target].MOB.Exp, pMob[party].MOB.CurrentScore.Level, pMob[target].MOB.CurrentScore.Level);
 
 							int myLevel = pMob[party].MOB.CurrentScore.Level;
 
@@ -297,7 +297,7 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 								pMob[party].extra.DayLog.Exp += exp;
 #pragma endregion
 
-								if (pMob[party].extra.Hold > 0 && exp >= pMob[party].extra.Hold)
+								if (pMob[party].extra.Hold > 0 && (unsigned int)exp >= pMob[party].extra.Hold)
 								{
 									int nhold = pMob[party].extra.Hold - exp;
 
@@ -308,7 +308,7 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 									pMob[party].extra.Hold = nhold;
 								}
 
-								else if (pMob[party].extra.Hold > 0 && exp < pMob[party].extra.Hold)
+								else if (pMob[party].extra.Hold > 0 && (unsigned int)exp < pMob[party].extra.Hold)
 								{
 									pMob[party].extra.Hold -= exp;
 									continue;
@@ -329,7 +329,7 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 						else if (party > 0 && party < MAX_USER && pMob[party].MOB.CurrentScore.Hp > 0 && (tx / 128) == 8 && (pMob[party].TargetX / 128) == 8
 							&& (ty / 128) == 2 && (pMob[party].TargetY / 128) == 2)
 						{
-							isExp = GetExpApply(pMob[party].extra, pMob[target].MOB.Exp, pMob[party].MOB.CurrentScore.Level, pMob[target].MOB.CurrentScore.Level);
+							isExp = GetExpApply(pMob[party].extra, (int)pMob[target].MOB.Exp, pMob[party].MOB.CurrentScore.Level, pMob[target].MOB.CurrentScore.Level);
 
 							int myLevel = pMob[party].MOB.CurrentScore.Level;
 
@@ -392,7 +392,7 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 								pMob[party].extra.DayLog.Exp += exp;
 #pragma endregion
 
-								if (pMob[party].extra.Hold > 0 && exp >= pMob[party].extra.Hold)
+								if (pMob[party].extra.Hold > 0 && (unsigned int)exp >= pMob[party].extra.Hold)
 								{
 									int nhold = pMob[party].extra.Hold - exp;
 
@@ -403,7 +403,7 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 									pMob[party].extra.Hold = nhold;
 								}
 
-								else if (pMob[party].extra.Hold > 0 && exp < pMob[party].extra.Hold)
+								else if (pMob[party].extra.Hold > 0 && (unsigned int)exp < pMob[party].extra.Hold)
 								{
 									pMob[party].extra.Hold -= exp;
 									continue;
@@ -423,7 +423,7 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 						else if (party > 0 && party < MAX_USER && pMob[party].MOB.CurrentScore.Hp > 0 && (tx / 128) == 10 && (pMob[party].TargetX / 128) == 10
 							&& (ty / 128) == 2 && (pMob[party].TargetY / 128) == 2)
 						{
-							isExp = GetExpApply(pMob[party].extra, pMob[target].MOB.Exp, pMob[party].MOB.CurrentScore.Level, pMob[target].MOB.CurrentScore.Level);
+							isExp = GetExpApply(pMob[party].extra, (int)pMob[target].MOB.Exp, pMob[party].MOB.CurrentScore.Level, pMob[target].MOB.CurrentScore.Level);
 
 							int myLevel = pMob[party].MOB.CurrentScore.Level;
 
@@ -485,7 +485,7 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 								pMob[party].extra.DayLog.Exp += exp;
 #pragma endregion
 
-								if (pMob[party].extra.Hold > 0 && exp >= pMob[party].extra.Hold)
+								if (pMob[party].extra.Hold > 0 && (unsigned int)exp >= pMob[party].extra.Hold)
 								{
 									int nhold = pMob[party].extra.Hold - exp;
 
@@ -496,7 +496,7 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 									pMob[party].extra.Hold = nhold;
 								}
 
-								else if (pMob[party].extra.Hold > 0 && exp < pMob[party].extra.Hold)
+								else if (pMob[party].extra.Hold > 0 && (unsigned int)exp < pMob[party].extra.Hold)
 								{
 									pMob[party].extra.Hold -= exp;
 									continue;
@@ -515,7 +515,7 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 						else if (party > 0 && party < MAX_USER && pMob[party].MOB.CurrentScore.Hp > 0 && tx >= pMob[party].TargetX - HALFGRIDX
 							&& tx <= pMob[party].TargetX + HALFGRIDX && ty >= pMob[party].TargetY - HALFGRIDY && ty <= pMob[party].TargetY + HALFGRIDY)
 						{
-							isExp = GetExpApply(pMob[party].extra, pMob[target].MOB.Exp, pMob[party].MOB.CurrentScore.Level, pMob[target].MOB.CurrentScore.Level);
+							isExp = GetExpApply(pMob[party].extra, (int)pMob[target].MOB.Exp, pMob[party].MOB.CurrentScore.Level, pMob[target].MOB.CurrentScore.Level);
 
 							int myLevel = pMob[party].MOB.CurrentScore.Level;
 
@@ -578,7 +578,7 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 								pMob[party].extra.DayLog.YearDay = when.tm_yday;
 								pMob[party].extra.DayLog.Exp += exp;
 #pragma endregion
-								if (pMob[party].extra.Hold > 0 && exp >= pMob[party].extra.Hold)
+								if (pMob[party].extra.Hold > 0 && (unsigned int)exp >= pMob[party].extra.Hold)
 								{
 									int nhold = pMob[party].extra.Hold - exp;
 
@@ -589,7 +589,7 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 									pMob[party].extra.Hold = nhold;
 								}
 
-								else if (pMob[party].extra.Hold > 0 && exp < pMob[party].extra.Hold)
+								else if (pMob[party].extra.Hold > 0 && (unsigned int)exp < pMob[party].extra.Hold)
 								{
 									pMob[party].extra.Hold -= exp;
 									continue;
@@ -960,7 +960,7 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 								}
 #pragma endregion
 								CCastleZakum::MobKilled(target, conn, PosX, PosY);
-								CEncampment::MobKilled(target, conn, PosX, PosY);
+								// CEncampment::MobKilled(target, conn, PosX, PosY);
 
 								if (GenerateID == ORC_GUERREIRO)
 									DoRecall(conn);
@@ -2046,8 +2046,8 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 			return;
 
 #pragma region Lose EXP
-		unsigned int curexp = pMob[target].extra.ClassMaster == MORTAL || pMob[target].extra.ClassMaster == ARCH ? g_pNextLevel[tlevel] : g_pNextLevel_2[tlevel];
-		unsigned int nextexp = pMob[target].extra.ClassMaster == MORTAL || pMob[target].extra.ClassMaster == ARCH ? g_pNextLevel[tlevel + 1] : g_pNextLevel_2[tlevel + 1];
+		unsigned int curexp = (unsigned int)(pMob[target].extra.ClassMaster == MORTAL || pMob[target].extra.ClassMaster == ARCH ? g_pNextLevel[tlevel] : g_pNextLevel_2[tlevel]);
+		unsigned int nextexp = (unsigned int)(pMob[target].extra.ClassMaster == MORTAL || pMob[target].extra.ClassMaster == ARCH ? g_pNextLevel[tlevel + 1] : g_pNextLevel_2[tlevel + 1]);
 		unsigned int alphaexp = (nextexp - curexp);
 		unsigned int deltaexp = (nextexp - curexp) / 20;
 
@@ -2196,10 +2196,10 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 				if (conn >= MAX_USER)
 				{
 					if (DEADPOINT)
-						pMob[target].extra.Hold += pMob[target].MOB.Exp > deltaexp ? deltaexp : pMob[target].MOB.Exp;
+						pMob[target].extra.Hold += (unsigned int)(pMob[target].MOB.Exp > deltaexp ? deltaexp : pMob[target].MOB.Exp);
 				}
 				else
-					pMob[target].extra.Hold += pMob[target].MOB.Exp > deltaexp ? deltaexp : pMob[target].MOB.Exp;
+					pMob[target].extra.Hold += (unsigned int)(pMob[target].MOB.Exp > deltaexp ? deltaexp : pMob[target].MOB.Exp);
 
 				if (DEADPOINT || conn < MAX_USER)
 				{

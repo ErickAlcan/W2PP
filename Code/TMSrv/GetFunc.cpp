@@ -891,7 +891,7 @@ int	GetExpApply(STRUCT_MOBEXTRA extra, int exp, int attacker, int target)
 		if (attacker >= 369 && extra.QuestInfo.Arch.Level370 == 0)
 			return 0;
 
-		exp *= 0.50;
+		exp = (int)(exp * 0.50);
 	}
 	else if (extra.ClassMaster == CELESTIAL && exp > 0)
 	{

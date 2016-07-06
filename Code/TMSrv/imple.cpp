@@ -11,7 +11,6 @@
 #include "SendFunc.h"
 #include "ProcessClientMessage.h"
 #include "ProcessDBMessage.h"
-#include "CEncampment.h"
 #include "CCastleZakum.h"
 
 void SaveAll()
@@ -38,7 +37,7 @@ void ProcessImple(int conn, int level, char * str)
 	char sval6[128];
 	char sval7[128];
 	char sval8[128];
-	char sval9[128];
+
 	unsigned int  ival1 = 0;
 	unsigned int  ival2 = 0;
 	long long  dval2 = 0;
@@ -48,9 +47,8 @@ void ProcessImple(int conn, int level, char * str)
 	unsigned int  ival6 = 0;
 	unsigned int  ival7 = 0;
 	unsigned int  ival8 = 0;
-	unsigned int  ival9 = 0;
 
-	sscanf(str + 1, "%s %s %s %s %s %s %s %s %s", cmd, sval1, sval2, sval3, sval4, sval5, sval6, sval7, sval8, sval9);
+	sscanf(str + 1, "%s %s %s %s %s %s %s %s %s", cmd, sval1, sval2, sval3, sval4, sval5, sval6, sval7, sval8);
 
 	sscanf(sval1, "%d", &ival1);
 	sscanf(sval2, "%llu", &dval2);
@@ -61,7 +59,6 @@ void ProcessImple(int conn, int level, char * str)
 	sscanf(sval6, "%d", &ival6);
 	sscanf(sval7, "%d", &ival7);
 	sscanf(sval8, "%d", &ival8);
-	sscanf(sval9, "%d", &ival9);
 
 	char logtemp[256];
 	sprintf(logtemp, "adm %s", str);
@@ -241,7 +238,7 @@ void ProcessImple(int conn, int level, char * str)
 				CReadFiles::ReadSancRate();
 				CReadFiles::ReadQuestsRate();
 				CReadFiles::ReadCompRate();
-				CEncampment::ReadCamp();
+				// CEncampment::ReadCamp();
 				CCastleZakum::ReadCastleQuest();
 
 				SendClientMessage(conn, "SET RELOAD FILE");
@@ -645,7 +642,7 @@ void ProcessImple(int conn, int level, char * str)
 		}
 		else if (!strcmp(cmd, "generate"))
 		{
-			if (ival1 <= 0 || ival1 > mNPCGen.NumList)
+			if (ival1 <= 0 || ival1 > (unsigned int)mNPCGen.NumList)
 			{
 				SendClientMessage(conn, "generation index wrong");
 				return;

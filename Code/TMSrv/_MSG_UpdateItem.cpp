@@ -73,8 +73,8 @@ void Exec_MSG_UpdateItem(int conn, char *pMsg)
 	SendItem(conn, ITEM_PLACE_CARRY, i, &pMob[conn].MOB.Carry[i]);
 NoNeedKey:
 
-	if (CEncampment::OpenTreasureBox(conn, gateid) == TRUE)
-		return;
+	/*if (CEncampment::OpenTreasureBox(conn, gateid) == TRUE)
+		return;*/
 
 	int heigth = 0;
 
