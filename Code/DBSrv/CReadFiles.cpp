@@ -1027,6 +1027,9 @@ void CReadFiles::WriteRanking()
 
 	fp = fopen(RANKING_PATH, "wt");
 
+	if (fp == NULL)
+		return;
+
 	char classmaster[6][64] = { "SEM CLASSMASTER", "M", "A", "C", "C", "SC" };
 	char classe[4][64] = { "TK", "FM", "BM", "HT" };
 
