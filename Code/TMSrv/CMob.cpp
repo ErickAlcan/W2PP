@@ -400,32 +400,31 @@ void CMob::SelectTargetFromEnemyList(void)
 			continue;
 		}
 
-		if (myenemy >= MAX_USER)
-			goto LABEL_51;
-
-		if (pMob[myenemy].MOB.Rsv & 0x10)
+		if (myenemy < MAX_USER)
 		{
-			EnemyList[i] = 0;
-			continue;
-		}
-		if (pMob[myenemy].MOB.BaseScore.Level > MAX_LEVEL && pMob[myenemy].MOB.Merchant & 1 == 0)
-		{
-			EnemyList[i] = 0;
-			continue;
-		}
 
-	LABEL_51:
+			if (pMob[myenemy].MOB.Rsv & 0x10)
+			{
+				EnemyList[i] = 0;
+				continue;
+			}
+			if (pMob[myenemy].MOB.BaseScore.Level > MAX_LEVEL && ((pMob[myenemy].MOB.Merchant & 1) == 0))
+			{
+				EnemyList[i] = 0;
+				continue;
+			}
 
-		if (pMob[myenemy].TargetX >= TargetX - dis && pMob[myenemy].TargetX <= TargetX + dis &&
-			pMob[myenemy].TargetY >= TargetY - dis && pMob[myenemy].TargetY <= TargetY + dis)
-		{
+			if (pMob[myenemy].TargetX >= TargetX - dis && pMob[myenemy].TargetX <= TargetX + dis &&
+				pMob[myenemy].TargetY >= TargetY - dis && pMob[myenemy].TargetY <= TargetY + dis)
+			{
+				Enemy[i] = 0;
+				continue;
+			}
 			Enemy[i] = BASE_GetDistance(TargetX, TargetY, pMob[myenemy].TargetX, pMob[myenemy].TargetY);
 
 			if (myenemy > MAX_USER)
-				Enemy[i] += 2;
+				EnemyList[i] = EnemyList[i] + 2;
 		}
-		else
-			EnemyList[i] = 0;
 		
 	}
 
@@ -448,6 +447,7 @@ void CMob::SelectTargetFromEnemyList(void)
 	else
 		CurrentTarget = nextenemy;
 }
+
 
 int  CMob::SetSegment(void)
 {
@@ -687,7 +687,7 @@ void CMob::GetCurrentScore(int idx)
 	if(MOB.Equip[13].sIndex == 3904 || MOB.Equip[13].sIndex == 3907)
 		ExpBonus += 32;
 
-	//Concentração
+	//ConcentraÃ§Ã£o
 	if ((MOB.LearnedSkill & (1 << 28)) != 0)
 		Accuracy += 50;
 
@@ -715,7 +715,7 @@ void CMob::GetCurrentScore(int idx)
 	int fw1 = (w1 / 2);
 	int fw2 = (w2 / 2);
 
-	//Pericia do caçador
+	//Pericia do caÃ§ador
 	if(MOB.LearnedSkill & (1 << 10) && MOB.Class == 3)
 	{
 		fw1 = w1;
