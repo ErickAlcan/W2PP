@@ -1,3 +1,22 @@
+/*
+*   Copyright (C) {2015}  {Victor Klafke, Charles TheHouse}
+*
+*   This program is free software: you can redistribute it and/or modify
+*   it under the terms of the GNU General Public License as published by
+*   the Free Software Foundation, either version 3 of the License, or
+*   (at your option) any later version.
+*
+*   This program is distributed in the hope that it will be useful,
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*   GNU General Public License for more details.
+*
+*   You should have received a copy of the GNU General Public License
+*   along with this program.  If not, see [http://www.gnu.org/licenses/].
+*
+*   Contact at: victor.klafke@ecomp.ufsm.br
+*/
+
 #include <windows.h>
 #include <windowsx.h>
 #include <stdlib.h>
@@ -204,7 +223,7 @@ int g_pMountBonus[30][5] =
 	{10, 1, 0, 0, 4},//Porco
 	{10, 1, 0, 0, 4},//Javali
 	{50, 1, 0, 0, 5},//Lobo
-	{80, 15, 0, 0, 5},//Drag„o menor
+	{80, 15, 0, 0, 5},//Drag√£o menor
 	{100, 20, 0, 0, 4},//Urso
 	{150, 25, 0, 0, 5},//Dente de sabre
 	{250, 50, 40, 0, 6},//Cavalo s/sela N
@@ -221,8 +240,8 @@ int g_pMountBonus[30][5] =
 	{600, 90, 0, 0, 6},//Dragao
 	{550, 90, 0, 20, 6},//Fenrir das sombras
 	{650, 100, 60, 28, 6},//Tigre de fogo
-	{750, 110, 80, 32, 6},//Drag„o vermelho
-	{570, 90, 20, 16, 6},//UnicÛrnio
+	{750, 110, 80, 32, 6},//Drag√£o vermelho
+	{570, 90, 20, 16, 6},//Unic√≥rnio
 	{570, 90, 30, 8, 6},//Pegasus
 	{570, 90, 40, 12, 6},//Unisus
 	{590, 80, 30, 20, 6},//Grifo
@@ -248,10 +267,10 @@ int g_pMountTempBonus[20][5] =
 	{ 450, 72, 0, 0, 6 },//Klazedale 30D
 	{ 325, 35, 16, 28, 6 },//Gulfaxi 30D
 	{ 350, 45, 10, 4, 6 },//Tigre de Fogo
-	{ 250, 25, 0, 31, 6 },//Drag„o Vermelho
-	{ 80, 15, 0, 31, 6 },//Drag„o Menor
-	{ 950, 145, 60, 20, 6 },//Drag„o Akelo
-	{ 950, 145, 60, 20, 6 },//Drag„o Hekalo
+	{ 250, 25, 0, 31, 6 },//Drag√£o Vermelho
+	{ 80, 15, 0, 31, 6 },//Drag√£o Menor
+	{ 950, 145, 60, 20, 6 },//Drag√£o Akelo
+	{ 950, 145, 60, 20, 6 },//Drag√£o Hekalo
 };
 unsigned char g_pGuildSub[8] = {0xA5, 0xB0, 0xA5, 0xB1, 0xA5, 0xB2, 0x00, 0x00};
 
@@ -262,7 +281,7 @@ unsigned char g_pGuildIndex[36] =
 	0xA5, 0xB8, 0xA5, 0xB9, 0xA3, 0xC1, 0xA3, 0xC2, 0xA3, 0xC3, 0xA3, 0xC4, 0xA3, 0xC5, 0xA3, 0xC6, 
 	0x00, 0x00, 0x00, 0x00
 };
-//char g_pGuildMark[168] = {"??????????????◊?????ø???????Üá????????Æ?????????????????????????"};
+//char g_pGuildMark[168] = {"??????????????√ó?????¬ø???????‚Ä†‚Ä°????????¬Æ?????????????????????????"};
 unsigned char g_pGuildMark[132] = 
 {
 	0xA5, 0xB0, 0xA5, 0xB1, 0xA5, 0xB2, 0xA5, 0xB3, 0xA5, 0xB4, 0xA5, 0xB5, 0xA5, 0xB6, 0xA5, 0xB7, 
@@ -706,7 +725,7 @@ STRUCT_BEASTBONUS pTransBonus[5] =
 	{ 105, 120, 110, 120, 105, 115, 3, 0, 20, 0, 100, 100, 100, 100, 100, 100, 155 }
 };
 
-//char KorFirst[36] = {0,};//"§°§¢§§§ß§®§©§±§≤§≥§µ§∂§∑§∏§π§∫§ª§º§Ω§æ";
+//char KorFirst[36] = {0,};//"¬§¬°¬§¬¢¬§¬§¬§¬ß¬§¬®¬§¬©¬§¬±¬§¬≤¬§¬≥¬§¬µ¬§¬∂¬§¬∑¬§¬∏¬§¬π¬§¬∫¬§¬ª¬§¬º¬§¬Ω¬§¬æ";
 unsigned char KorFirst[36] = 
 {
 	0xA4, 0xA1, 0xA4, 0xA2, 0xA4, 0xA4, 0xA4, 0xA7, 0xA4, 0xA8, 0xA4, 0xA9, 0xA4, 0xB1, 0xA4, 0xB2, 
@@ -2417,7 +2436,7 @@ int BASE_GetMobAbility(STRUCT_MOB *mob, unsigned char Type)
 				else
 					multi = 30;
 
-				//Pericia do caÁador
+				//Pericia do ca√ßador
 				if(mob->LearnedSkill & (1 << 10) && mob->Class == 3)
 					multi = 100;
 
@@ -2730,7 +2749,7 @@ void BASE_WriteItemList(int nItemList)
 
 		if(fp == NULL)
 		{
-			MessageBox(NULL, "ItemList.bin¿ª ª˝º∫«“ºˆ æ¯Ω¿¥œ¥Ÿ. ", "ERROR", NULL);
+			MessageBox(NULL, "ItemList.bin√Ä¬ª ¬ª√Ω¬º¬∫√á√í¬º√∂ ¬æ√∏¬Ω√Ä¬¥√è¬¥√ô. ", "ERROR", NULL);
 			return;
 		}
 
@@ -3187,7 +3206,7 @@ void BASE_GetCurrentScore(STRUCT_MOB & MOB, STRUCT_AFFECT *Affect, STRUCT_MOBEXT
 
 	if(MOB.Class == 0)
 	{
-		//Armadura CrÌtica
+		//Armadura Cr√≠tica
 		if(MOB.LearnedSkill & (1 << 15))
 		{
 			MOB.CurrentScore.Ac = (int)(MOB.CurrentScore.Ac * 1.1f);
@@ -3247,7 +3266,7 @@ void BASE_GetCurrentScore(STRUCT_MOB & MOB, STRUCT_AFFECT *Affect, STRUCT_MOBEXT
 		int Value = Affect[i].Value;
 		int Level = Affect[i].Level;
 
-		if(Type == 1) // Lentid„o (?)
+		if(Type == 1) // Lentid√£o (?)
 		{
 			Run -= Value;
 
@@ -3817,7 +3836,7 @@ void BASE_GetCurrentScore(STRUCT_MOB & MOB, STRUCT_AFFECT *Affect, STRUCT_MOBEXT
 				MOB.CurrentScore.Damage = totaldam;
 			}
 
-			//Precis„o
+			//Precis√£o
 			if((Level & (1 << 6)) != 0)
 				*Accuracy += 50;
 
@@ -3938,7 +3957,7 @@ void BASE_GetCurrentScore(STRUCT_MOB & MOB, STRUCT_AFFECT *Affect, STRUCT_MOBEXT
 			MOB.CurrentScore.Damage += special1 * 2;
 
 
-		//Vis„o do CaÁador
+		//Vis√£o do Ca√ßador
 		if(MOB.LearnedSkill & (1 << 18))
 		{
 			int criticaladd = ((special3+1)/10) + (MOB.CurrentScore.Dex / 75);
@@ -3949,7 +3968,7 @@ void BASE_GetCurrentScore(STRUCT_MOB & MOB, STRUCT_AFFECT *Affect, STRUCT_MOBEXT
 			Critical += criticaladd;
 		}
 
-		//ProteÁ„o das sombras
+		//Prote√ß√£o das sombras
 		if(MOB.LearnedSkill & (1 << 22))
 		{
 			int sombraadd = (special3 / 3) + 10;
@@ -5202,7 +5221,7 @@ void BASE_InitializeEffectName()
 
 		if(val < 0 || val > MAX_EFFECTINDEX)
 		{
-			MessageBox(NULL, temp,"Effect.h¿« Define Value∞° º˝¿⁄∞° æ∆¥œ∞≈≥™ 0¿Ã«œ ∂«¥¬ MAX_EFFECTINDEX¿ÃªÛ¿Ã¥Ÿ", MB_OK);
+			MessageBox(NULL, temp,"Effect.h√Ä√á Define Value¬∞¬° ¬º√Ω√Ä√ö¬∞¬° ¬æ√Ü¬¥√è¬∞√Ö¬≥¬™ 0√Ä√å√á√è ¬∂√á¬¥√Ç MAX_EFFECTINDEX√Ä√å¬ª√≥√Ä√å¬¥√ô", MB_OK);
 
 			continue;
 		}
@@ -6534,7 +6553,7 @@ BOOL BASE_CheckPacket(MSG_STANDARD *m)
 //	if	(m->Type==  _MSG_BillingPage				&& m->Size != sizeof( MSG_STANDARDPARM          ))code = 1;
 	if	(m->Type==  _MSG_DBMessagePanel				&& m->Size != sizeof( MSG_MessagePanel			))code = 1;
 	if	(m->Type==  _MSG_DBMessageBoxOk				&& m->Size != sizeof( MSG_MessageBoxOk       	))code = 1;
-//	if	(m->Type==  _MSG_DBCNFNewAccount			&& m->Size != sizeof( MSG_DBCNFNewAccount		))code = 1; // ¿•ø°º≠∏∏¡ˆø¯
+//	if	(m->Type==  _MSG_DBCNFNewAccount			&& m->Size != sizeof( MSG_DBCNFNewAccount		))code = 1; // √Ä¬•¬ø¬°¬º¬≠¬∏¬∏√Å√∂¬ø√∏
 	if	(m->Type==  _MSG_DBCNFAccountLogin			&& m->Size != sizeof( MSG_DBCNFAccountLogin    	))code = 1;
 	if	(m->Type==  _MSG_DBCNFCharacterLogin		&& m->Size != sizeof( MSG_CNFCharacterLogin  	))code = 1;
 	if	(m->Type==  _MSG_DBCNFNewCharacter			&& m->Size != sizeof( MSG_CNFNewCharacter    	))code = 1;
