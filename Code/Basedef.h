@@ -1442,6 +1442,7 @@ struct		  MSG_UpdateCarry
 	int Coin;
 };
 
+#pragma pack(push, 1)
 const short  _MSG_UpdateScore				= (54 | FLAG_GAME2CLIENT | FLAG_CLIENT2GAME);
 struct		  MSG_UpdateScore
 {
@@ -1468,6 +1469,7 @@ struct		  MSG_UpdateScore
 	unsigned char Special[4];
 
 };
+#pragma pack(pop)
 
 const short  _MSG_UpdateEtc					= (55 | FLAG_GAME2CLIENT | FLAG_CLIENT2GAME);
 struct		  MSG_UpdateEtc

@@ -19,8 +19,12 @@ void Exec_MSG_AccountLogin(int conn, char *pMsg)
 		CloseUser(conn);
 		return;
 	}
-			
+		
+#ifdef _PACKET_DEBUG
+	if (Size < sizeof(MSG_AccountLogin))
+#else
 	if (Size < sizeof(MSG_AccountLogin) || m->ClientVersion != ClientVersion)
+#endif
 	{
 		sprintf(temp, g_pMessageStringTable[_NN_Version_Not_Match_Rerun], APP_VERSION);
 		SendClientMessage(conn, temp);

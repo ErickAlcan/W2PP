@@ -515,8 +515,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	struct addrinfo hints, *res, *p;
 
 	memset(&hints, 0, sizeof(addrinfo));
-	memset(&res, 0, sizeof(addrinfo));
-	memset(&p, 0, sizeof(addrinfo));
 	
 	hints.ai_family = AF_INET;
 	hints.ai_socktype = SOCK_STREAM;
