@@ -1149,6 +1149,9 @@ void SendScore(int conn)
 	sm_vus.Special[1] = 0xCC;
 	sm_vus.Special[2] = 0xCC;
 	sm_vus.Special[3] = 0xCC;
+	
+	sm_vus.RegenHP = 0xCC;
+	sm_vus.RegenMP = 0xCC;
 
 	sm_vus.Magic = pMob[conn].MOB.Magic;
 

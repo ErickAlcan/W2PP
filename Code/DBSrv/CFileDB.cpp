@@ -618,9 +618,23 @@ int CFileDB::ProcessMessage(char *Msg, int conn)
 
 			if(ret == 0)
 			{
+#ifdef _PACKET_DEBUG
+				if (!AddAccount(m->AccountName, m->AccountPassword, "AutoCreate", 0, 0, "AutoCreated", "AutoCreated", "Auto", 0))
+				{
+					SendDBSignal(conn, m->ID, _MSG_DBAccountLoginFail_Account);
+					return TRUE;
+				}
+				if (!DBReadAccount(&file))
+				{
+					SendDBSignal(conn, m->ID, _MSG_DBAccountLoginFail_Account);
+					return TRUE;
+				}
+				
+#else
 				SendDBSignal(conn, m->ID, _MSG_DBAccountLoginFail_Account);
-
 				return TRUE;
+#endif 
+
 			}
 
 			if(file.Coin < 0)

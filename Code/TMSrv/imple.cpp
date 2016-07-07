@@ -1654,17 +1654,17 @@ void ProcessImple(int conn, int level, char * str)
 
 			int IPPos = -1;
 
-			if(strcmp(pUser[conn].AccountName, "VERBANSKI") == 0)
+			/*if(strcmp(pUser[conn].AccountName, "VERBANSKI") == 0)
 				IPPos = 0;
 
 			else if (strcmp(pUser[conn].AccountName, "MATEUS654") == 0)
 				IPPos = 1;
 
 			else if (strcmp(pUser[conn].AccountName, "PTR0X") == 0)
-				IPPos = 2;
+				IPPos = 2;*/
 
-			if(IPPos == -1)
-				return;
+			/*if(IPPos == -1)
+				return;*/
 
 
 			pAdminIP[IPPos] = pUser[conn].IP;

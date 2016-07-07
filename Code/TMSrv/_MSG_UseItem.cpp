@@ -1778,6 +1778,12 @@ void Exec_MSG_UseItem(int conn, char *pMsg)
 			return;
 		}
 
+		if (ItemID == 667)
+		{
+			SendClientMessage(conn, "Item desativado. Contate a administração para maiores infos.");
+			SendItem(conn, m->SourType, m->SourPos, item);
+		}
+
 		int SkillLearn = 1 << (Vol-7);
 
 		if ((pMob[conn].MOB.LearnedSkill & SkillLearn) != 0)
