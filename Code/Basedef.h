@@ -1,3 +1,23 @@
+/*
+*   Copyright (C) {2015}  {Victor Klafke, Charles TheHouse}
+*
+*   This program is free software: you can redistribute it and/or modify
+*   it under the terms of the GNU General Public License as published by
+*   the Free Software Foundation, either version 3 of the License, or
+*   (at your option) any later version.
+*
+*   This program is distributed in the hope that it will be useful,
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*   GNU General Public License for more details.
+*
+*   You should have received a copy of the GNU General Public License
+*   along with this program.  If not, see [http://www.gnu.org/licenses/].
+*
+*   Contact at: victor.klafke@ecomp.ufsm.br
+*/
+
+
 #ifndef _BASEDEF_ // Last updated 27/01/2013
 #define _BASEDEF_
 
@@ -476,7 +496,7 @@ struct STRUCT_MOBEXTRA
 		struct
 		{
 			char Newbie;//00_01_02_03_04  quest com quatro etapas
-			char TerraMistica;//0 : n„o pegou a quest 1: pegou a quest e n„o concluiu 2: quest completa
+			char TerraMistica;//0 : n√£o pegou a quest 1: pegou a quest e n√£o concluiu 2: quest completa
 			char MolarGargula;
 			char PilulaOrc;
 
@@ -2475,7 +2495,7 @@ extern int BaseSIDCHM[4][6];
 
 extern int g_pBonusValue[10][2][2];
 extern int g_pBonusType[10];
-extern int g_pBonusValue2[48][4];//Peito calÁa
+extern int g_pBonusValue2[48][4];//Peito cal√ßa
 extern int g_pBonusValue3[25][4];//Elmo
 extern int g_pBonusValue4[30][4];//Luva
 extern int g_pBonusValue5[30][4];//Bota
