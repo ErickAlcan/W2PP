@@ -26,6 +26,22 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 		return;
 	}
 
+
+	// Personagem tentando usar a skill do poder superior.
+	if (m->SkillIndex == 96)
+	{
+		AddCrackError(conn, 1, 8);
+		return;
+	}
+
+	// Personagem tentando usar a skill do canhão.
+	if (m->SkillIndex == 97)
+	{
+		AddCrackError(conn, 1, 8);
+		return;
+	}
+
+
 	if(pUser[conn].OnlyTrade)
 	{
 		SendClientMessage(conn, g_pMessageStringTable[_NN_ONLYTRADE]);

@@ -180,8 +180,8 @@
 #define		REF_14					22
 #define		REF_15					27
 
-#define		MAX_HP					2000000000
-#define		MAX_MP					2000000000
+#define		MAX_HP					200000000
+#define		MAX_MP					200000000
 #define		MAX_DAMAGE				1000000
 #define		MAX_DAMAGE_MG			254
 #define		AFFECT_1H				450
@@ -1175,7 +1175,7 @@ const short  _MSG_MessagePanel				= (1 | FLAG_GAME2CLIENT);
 struct		  MSG_MessagePanel
 {
 	_MSG;
-	char     String[96];
+	char     String[128];
 };
 
 const short  _MSG_MessageBoxOk				= (2 | FLAG_GAME2CLIENT);

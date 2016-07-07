@@ -8,6 +8,7 @@
 #include <sys/stat.h>
 #include <sys/timeb.h>
 #include <string.h>        
+#include <math.h>
 #include <time.h>
 #include <mbstring.h>
 
@@ -5808,25 +5809,7 @@ int BASE_GetRoute(int x, int y, int *targetx, int *targety, char *Route, int dis
 
 int BASE_GetDistance(int x1, int y1, int x2, int y2)
 {
-	int	dx, dy;
-
-	if(x1 > x2) 
-		dx = x1 - x2;
-	else	
-		dx = x2 - x1;
-
-	if(y1 > y2) 
-		dy = y1 - y2;
-	else       
-		dy = y2 - y1;
-
-	if(dx <= 6 && dy <= 6)
-		return g_pDistanceTable[dy][dx];
-
-	if(dx > dy) 
-		return dx+1;
-	else       
-		return dy+1;
+	return (int)sqrt(pow((x1 - x2), 2) + pow((y1 - y2), 2));
 }
 
 void BASE_WriteInitItem()
