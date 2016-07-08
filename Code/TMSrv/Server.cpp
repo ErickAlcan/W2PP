@@ -3610,6 +3610,7 @@ BOOL WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 	// CEncampment::ReadCamp();
 	CCastleZakum::ReadCastleQuest();
 
+	srand((unsigned int)time(0));
 	SetTimer(hWndMain, TIMER_SEC, 500, NULL);
 	SetTimer(hWndMain, TIMER_MIN, 12000, NULL);
 
@@ -8290,8 +8291,8 @@ BOOL SetAffect(int conn, int skillnum, int time, int Level)
 	if (time >= 2139062143)
 		pMob[conn].Affect[EmptyAffect].Time = 2139062143;
 
+	
 	pMob[conn].GetCurrentScore(conn);
-
 
 	return TRUE;
 }
@@ -8588,8 +8589,8 @@ int ApplyHp(int conn)
 
 		hp += hpdif;
 
-		if (hp > 2000000000)
-			hp = 2000000000;
+		if (hp > MAX_HP)
+			hp = MAX_HP;
 
 		pMob[conn].MOB.CurrentScore.Hp = hp;
 
@@ -8622,8 +8623,8 @@ int ApplyMp(int conn)
 
 		mp += mpdif;
 
-		if (mp > 2000000000)
-			mp = 2000000000;
+		if (mp > MAX_MP)
+			mp = MAX_MP;
 
 		pMob[conn].MOB.CurrentScore.Mp = mp;
 
