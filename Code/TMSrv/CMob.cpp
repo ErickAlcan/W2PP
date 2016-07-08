@@ -449,141 +449,132 @@ void CMob::SelectTargetFromEnemyList(void)
 		CurrentTarget = nextenemy;
 }
 
-int  CMob::SetSegment(void)
+int CMob::SetSegment()
 {
-	int rt = 0;
-
 	if (RouteType == 6)
 	{
-
 		SegmentProgress = 0;
 		SegmentDirection = 0;
-
 		SegmentX = SegmentListX[SegmentProgress];
 		SegmentY = SegmentListY[SegmentProgress];
+
 		WaitSec = 0;
 		return 0;
 	}
 
-	else
+	if (RouteType <= 0 && RouteType > 4)
 	{
-		if (RouteType >= 0 && RouteType <= 4)
-		{
-			while (1)
-			{
-				while (1)
-				{
-					while (1)
-					{
-						if (SegmentDirection)
-							SegmentProgress--;
-						else
-							SegmentProgress++;
-
-						if (SegmentProgress > -1)
-							break;
-
-						if (RouteType == 0)
-						{
-							SegmentProgress = 0;
-							SegmentDirection = 0;
-							rt = 2;
-							Log("SetSegment SegmentProgress -1 but route type 0", MOB.MobName, 0);
-							goto LABEL_40;
-						}
-						if (RouteType == 1)
-						{
-							SegmentProgress = 0;
-							SegmentDirection = 0;
-						}
-						else
-						{
-							if (RouteType == 2)
-							{
-								SegmentProgress = 0;
-								SegmentDirection = 0;
-							}
-							else
-							{
-								if (RouteType == 3)
-								{
-									SegmentProgress = 4;
-									SegmentDirection = 1;
-
-									rt = 2;
-									goto LABEL_40;
-								}
-								if (RouteType == 4)
-								{
-									Log("SetSegment SegmentProgress -1 but route type 4", MOB.MobName, 0);
-									goto LABEL_40;
-								}
-							}
-						}
-					}
-					if (SegmentProgress >= 5)
-						break;
-
-					if (SegmentListX[SegmentProgress] && SegmentListX[SegmentProgress] >= 1 && SegmentListX[SegmentProgress] <= MAX_GRIDX)
-					{
-						rt = 0;
-						goto LABEL_40;
-					}
-				}
-				if (RouteType == 0)
-					break;
-
-				if (RouteType == 1)
-				{
-					rt = 2;
-					goto LABEL_40;
-				}
-				if (RouteType != 2 && RouteType != 3)
-				{
-					if (RouteType == 4)
-						SegmentProgress = -1;
-				}
-				else
-				{
-					SegmentProgress = 4;
-					SegmentDirection = 1;
-				}
-			}
-			SegmentProgress = 4;
-			Mode = 4;
-			MOB.BaseScore.Merchant = MOB.Merchant;
-
-			if (strlen(Route) > 0)
-			{
-				int naction = NextAction + strlen(Route) + 3;
-				naction = naction - 48;
-
-				if (naction >= 1 && naction <= 9)
-				{
-					naction = 16 * naction;
-					MOB.BaseScore.Merchant |= naction;
-				}
-			}
-			GetCurrentScore(MAX_USER);
-			rt |= 1;
-
-		LABEL_40:
-		
-			if (SegmentProgress == -1)
-				Log("Wrong SetSegment -1 WARNING!!!!!!!!!", MOB.MobName, 0);
-			
-			SegmentX = SegmentListX[SegmentProgress];
-			SegmentY = SegmentListY[SegmentProgress];
-			WaitSec = SegmentWait[SegmentProgress];
-			return rt;
-		}
-		else
-		{
-			Log("Wrong SetSegment", MOB.MobName, 0);
-			return 0;
-		}
+		Log("Wrong SetSegment", MOB.MobName, 0);
+		return 0;
 	}
-	return rt;
+
+	int iterator;
+	while (1)
+	{
+		if (SegmentDirection == 0)
+			SegmentProgress = SegmentProgress + 1;
+		else
+			SegmentProgress = SegmentProgress - 1;
+		
+		if (SegmentProgress == -1)
+		{
+			if (RouteType == 0)
+			{
+				SegmentProgress = 0;
+				SegmentDirection = 0;
+				iterator = 2;
+				Log("SetSegment SegmentProgress -1 but route type 0", MOB.MobName, 0);
+				break;
+			}
+
+			if (RouteType == 1)
+			{
+				SegmentProgress = 0;
+				SegmentDirection = 0;
+			}
+			else if (RouteType == 2)
+			{
+				SegmentProgress = 0;
+				SegmentDirection = 0;
+			}
+			else if (RouteType == 3)
+			{
+				iterator = 2;
+				break;
+			}
+
+			else if (RouteType == 4)
+			{
+				Log("SetSegment SegmentProgress -1 but route type 4", MOB.MobName, 0);
+				break;
+			}
+			continue;
+		}
+
+		if (SegmentProgress == 5)
+		{
+			if (RouteType == 0)
+			{
+				SegmentProgress = 4;
+				Mode = 4;
+				MOB.BaseScore.Merchant = MOB.Merchant;
+				int len = strlen(Route);
+				int rt = 0;
+
+				if (len > 0)
+				{
+					rt = Route[len];
+
+					rt = (rt & 0xFF) - 48;
+
+					if ((rt & 0xFF) >= 1 && (rt & 0xFF) <= 9)
+					{
+						rt = (rt & 0xFF) << 4;
+
+						MOB.Merchant = MOB.Merchant | (rt & 0xFF);
+						
+					}
+				}
+
+				GetCurrentScore(MAX_USER);
+
+				iterator = 1;
+				break;
+			}
+			
+			if (RouteType == 1)
+			{
+				iterator = 2;
+				break;
+			}
+
+			if (RouteType == 2 || RouteType == 3)
+			{
+				SegmentProgress = 4;
+				SegmentDirection = 1;
+				continue;
+			}
+
+			if (RouteType == 4)
+			{
+				SegmentProgress = -1;
+				continue;
+			}
+			continue;
+		}
+
+		if (SegmentListX[SegmentProgress] == 0)
+			continue;
+
+		iterator = 0;
+		break;
+	}
+
+	SegmentX = SegmentListX[SegmentProgress];
+	SegmentY = SegmentListY[SegmentProgress];
+
+	WaitSec = 0;
+	return iterator;
 }
 
 void CMob::GetCurrentScore(int idx)
@@ -687,7 +678,7 @@ void CMob::GetCurrentScore(int idx)
 	if(MOB.Equip[13].sIndex == 3904 || MOB.Equip[13].sIndex == 3907)
 		ExpBonus += 32;
 
-	//Concentração
+	//ConcentraÃ§Ã£o
 	if ((MOB.LearnedSkill & (1 << 28)) != 0)
 		Accuracy += 50;
 
@@ -715,7 +706,7 @@ void CMob::GetCurrentScore(int idx)
 	int fw1 = (w1 / 2);
 	int fw2 = (w2 / 2);
 
-	//Pericia do caçador
+	//Pericia do caÃ§ador
 	if(MOB.LearnedSkill & (1 << 10) && MOB.Class == 3)
 	{
 		fw1 = w1;

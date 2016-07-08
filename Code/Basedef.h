@@ -476,7 +476,7 @@ struct STRUCT_MOBEXTRA
 		struct
 		{
 			char Newbie;//00_01_02_03_04  quest com quatro etapas
-			char TerraMistica;//0 : n„o pegou a quest 1: pegou a quest e n„o concluiu 2: quest completa
+			char TerraMistica;//0 : n√£o pegou a quest 1: pegou a quest e n√£o concluiu 2: quest completa
 			char MolarGargula;
 			char PilulaOrc;
 
@@ -1175,7 +1175,7 @@ const short  _MSG_MessagePanel				= (1 | FLAG_GAME2CLIENT);
 struct		  MSG_MessagePanel
 {
 	_MSG;
-	char     String[96];
+	char     String[128]; //Correct size to fix SendScore Hp Bug
 };
 
 const short  _MSG_MessageBoxOk				= (2 | FLAG_GAME2CLIENT);
@@ -2475,7 +2475,7 @@ extern int BaseSIDCHM[4][6];
 
 extern int g_pBonusValue[10][2][2];
 extern int g_pBonusType[10];
-extern int g_pBonusValue2[48][4];//Peito calÁa
+extern int g_pBonusValue2[48][4];//Peito cal√ßa
 extern int g_pBonusValue3[25][4];//Elmo
 extern int g_pBonusValue4[30][4];//Luva
 extern int g_pBonusValue5[30][4];//Bota
