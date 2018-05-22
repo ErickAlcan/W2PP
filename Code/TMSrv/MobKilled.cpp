@@ -1,5 +1,5 @@
 /*
-*   Copyright (C) {2015}  {Victor Klafke, Charles TheHouse}
+*   Copyright (C) {2015}  {VK, Charles TheHouse}
 *
 *   This program is free software: you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 *   You should have received a copy of the GNU General Public License
 *   along with this program.  If not, see [http://www.gnu.org/licenses/].
 *
-*   Contact at: victor.klafke@ecomp.ufsm.br
+*   Contact at:
 */
 #include <Windows.h>
 #include <stdio.h>
@@ -210,7 +210,7 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 		{
 			if (conn < MAX_USER && pMob[target].MOB.Clan != 4)
 			{
-#pragma region Distribuição da EXP
+#pragma region DistribuiÃ§Ã£o da EXP
 				int MobExp = GetExpApply(pMob[conn].extra, (int)pMob[target].MOB.Exp, pMob[conn].MOB.CurrentScore.Level, pMob[target].MOB.CurrentScore.Level);
 				int FinalExp = 0;
 
@@ -307,7 +307,7 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 								else
 									exp -= (exp * 15) / 100;
 
-#pragma region Log de Experiência diário
+#pragma region Log de ExperiÃªncia diÃ¡rio
 								if (when.tm_yday != pMob[party].extra.DayLog.YearDay)
 									pMob[party].extra.DayLog.Exp = 0;
 
@@ -402,7 +402,7 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 								else
 									exp -= (exp * 15) / 100;
 
-#pragma region Log de Experiência diário
+#pragma region Log de ExperiÃªncia diÃ¡rio
 								if (when.tm_yday != pMob[party].extra.DayLog.YearDay)
 									pMob[party].extra.DayLog.Exp = 0;
 
@@ -495,7 +495,7 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 									exp += (exp * 15) / 100;
 								else
 									exp -= (exp * 15) / 100;
-#pragma region Log de Experiência diário
+#pragma region Log de ExperiÃªncia diÃ¡rio
 								if (when.tm_yday != pMob[party].extra.DayLog.YearDay)
 									pMob[party].extra.DayLog.Exp = 0;
 
@@ -589,7 +589,7 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 								else
 									exp -= (exp * 15) / 100;
 
-#pragma region Log de Experiência diário
+#pragma region Log de ExperiÃªncia diÃ¡rio
 								if (when.tm_yday != pMob[party].extra.DayLog.YearDay)
 									pMob[party].extra.DayLog.Exp = 0;
 
@@ -715,7 +715,7 @@ void MobKilled(int target, int conn, int PosX, int PosY)
 						{
 							int GenerateID = pMob[target].GenerateIndex;
 
-#pragma region Portões de Noatum
+#pragma region PortÃµes de Noatum
 							if (pMob[target].MOB.Equip[0].sIndex == 220 && CastleState)
 							{
 								if (pMob[target].TargetX < 0 || pMob[target].TargetX >= MAX_GRIDX || pMob[target].TargetY < 0 || pMob[target].TargetY >= MAX_GRIDY)
