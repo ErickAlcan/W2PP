@@ -1,5 +1,5 @@
 /*
-*   Copyright (C) {2015}  {Victor Klafke, Charles TheHouse}
+*   Copyright (C) {2015}  {VK, Charles TheHouse}
 *
 *   This program is free software: you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -14,7 +14,6 @@
 *   You should have received a copy of the GNU General Public License
 *   along with this program.  If not, see [http://www.gnu.org/licenses/].
 *
-*   Contact at: victor.klafke@ecomp.ufsm.br
 */
 #include "ProcessClientMessage.h"
 
@@ -53,7 +52,7 @@ void Exec_MSG_CombineItemEhre(int conn, char *pMsg)
 	}
 
 	if (combine == 5 && (pMob[conn].MOB.Exp < 5000000 || pMob[conn].extra.ClassMaster == MORTAL || pMob[conn].extra.ClassMaster == ARCH || pMob[conn].MOB.CurrentScore.Level < 39))
-	{	 //Ref Abençoada
+	{	 //Ref AbenÃ§oada
 		SendClientMessage(conn, g_pMessageStringTable[_NN_Wrong_Combination]);
 		SendClientSignalParm(conn, ESCENE_FIELD, _MSG_CombineComplete, 0);
 		return;
@@ -380,7 +379,7 @@ void Exec_MSG_CombineItemEhre(int conn, char *pMsg)
 	else
 	{
 		if (combine == 5)
-		{//Ref Abençoada
+		{//Ref AbenÃ§oada
 			memcpy(&pMob[conn].MOB.Carry[m->InvenPos[2]], &m->Item[2], sizeof(STRUCT_ITEM));
 			SendItem(conn, ITEM_PLACE_CARRY, m->InvenPos[2], &pMob[conn].MOB.Carry[m->InvenPos[2]]);
 		}
