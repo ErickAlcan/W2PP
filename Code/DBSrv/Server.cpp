@@ -1,5 +1,5 @@
 /*
-*   Copyright (C) {2015}  {Victor Klafke, Charles TheHouse}
+*   Copyright (C) {2015}  {VK, Charles TheHouse}
 *
 *   This program is free software: you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 *   You should have received a copy of the GNU General Public License
 *   along with this program.  If not, see [http://www.gnu.org/licenses/].
 *
-*   Contact at: victor.klafke@ecomp.ufsm.br
+*   Contact at:
 */
 
 
@@ -338,7 +338,7 @@ int InitInstance(HANDLE hInstance, int nCmdShow) // Last updated 15/01/2013
 
 	hWndMain = CreateWindow("MainClass",  "DB Server", 
 		WS_OVERLAPPED | WS_CLIPCHILDREN | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX,    // Window style. 
-		CW_USEDEFAULT, CW_USEDEFAULT, 800, 600,            // W,H[MenuÇÕÄ¡¸é 480]
+		CW_USEDEFAULT, CW_USEDEFAULT, 800, 600,            // W,H[MenuÃ‡Ã•Ã„Â¡Â¸Ã© 480]
 		NULL, hMainMenu, (HINSTANCE)hInstance, NULL);
 
 	if (!hWndMain) 
@@ -1304,7 +1304,7 @@ LONG APIENTRY MainWndProc(HWND hWnd, UINT message, UINT wParam, LONG lParam)
 
 	case WM_CLOSE:
 		{	
-			int rret = MessageBox(hWndMain, "Desligando servidor, não se esqueça de salvar as contas !", "Aviso !! Desligando Servidor !!", MB_OKCANCEL | MB_ICONWARNING);
+			int rret = MessageBox(hWndMain, "Desligando servidor, nÃ£o se esqueÃ§a de salvar as contas !", "Aviso !! Desligando Servidor !!", MB_OKCANCEL | MB_ICONWARNING);
 
 			if(rret == 1)
 			{
