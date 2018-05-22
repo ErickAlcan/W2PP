@@ -1,5 +1,5 @@
 /*
-*   Copyright (C) {2015}  {Victor Klafke, Charles TheHouse}
+*   Copyright (C) {2015}  {VK, Charles TheHouse}
 *
 *   This program is free software: you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -14,7 +14,6 @@
 *   You should have received a copy of the GNU General Public License
 *   along with this program.  If not, see [http://www.gnu.org/licenses/].
 *
-*   Contact at: victor.klafke@ecomp.ufsm.br
 */
 #include <windows.h>
 
@@ -1129,7 +1128,7 @@ void ProcessImple(int conn, int level, char * str)
 		{
 			unsigned char attributemap = GetAttribute(pMob[conn].TargetX, pMob[conn].TargetY);
 
-			sprintf(temp, "Atributo do mapa é %d", attributemap);
+			sprintf(temp, "Atributo do mapa Ã© %d", attributemap);
 			SendClientMessage(conn, temp);
 		}
 		else if (!strcmp(cmd, "billconnect"))
@@ -1162,7 +1161,7 @@ void ProcessImple(int conn, int level, char * str)
 			DrawConfig(1);
 		}
 	}
-	if (level >= 1) ////////////////// 0ÀÌÇÏ¸é ¿©±â µé¾î¿ÀÁö¸¦ ¾Ê´Â´Ù.//////////////////////////////////////////////////////////////
+	if (level >= 1) ////////////////// 0Ã€ÃŒÃ‡ÃÂ¸Ã© Â¿Â©Â±Ã¢ ÂµÃ©Â¾Ã®Â¿Ã€ÃÃ¶Â¸Â¦ Â¾ÃŠÂ´Ã‚Â´Ã™.//////////////////////////////////////////////////////////////
 	{
 		if (!strcmp(cmd, "impost"))
 		{
