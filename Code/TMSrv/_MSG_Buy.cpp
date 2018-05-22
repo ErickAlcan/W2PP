@@ -1,5 +1,5 @@
 /*
-*   Copyright (C) {2015}  {Victor Klafke, Charles TheHouse}
+*   Copyright (C) {2015}  {VK, Charles TheHouse}
 *
 *   This program is free software: you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 *   You should have received a copy of the GNU General Public License
 *   along with this program.  If not, see [http://www.gnu.org/licenses/].
 *
-*   Contact at: victor.klafke@ecomp.ufsm.br
+*   Contact at:
 */
 #include "ProcessClientMessage.h"
 
@@ -239,14 +239,14 @@ LABEL_BUY1:
 
 		for (x = 0; x < MAX_MOB_MERC; x++)
 		{
-			//Verifica se o vendedor é um mob mercador especial.
+			//Verifica se o vendedor Ã© um mob mercador especial.
 			if (pMob[TargetID].GenerateIndex == pMobMerc[x].GenerateIndex)
 				break;
 		}
 
 		if (x != MAX_MOB_MERC)
-		{//O Vendedor é um mob mercador especial, portanto ele verifica se ainda possui unidades daquele item 
-		 //se tiver ele diminui do stock caso contrário ele avisa que não tem.
+		{//O Vendedor Ã© um mob mercador especial, portanto ele verifica se ainda possui unidades daquele item 
+		 //se tiver ele diminui do stock caso contrÃ¡rio ele avisa que nÃ£o tem.
 			if (pMobMerc[x].Stock[TargetInvenPos] == 0)
 			{
 				SendClientMessage(conn, g_pMessageStringTable[_NN_NOSTOCK]);
