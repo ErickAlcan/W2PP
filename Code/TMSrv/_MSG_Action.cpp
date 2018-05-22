@@ -1,5 +1,5 @@
 /*
-*   Copyright (C) {2015}  {Victor Klafke, Charles TheHouse}
+*   Copyright (C) {2015}  {VK, Charles TheHouse}
 *
 *   This program is free software: you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 *   You should have received a copy of the GNU General Public License
 *   along with this program.  If not, see [http://www.gnu.org/licenses/].
 *
-*   Contact at: victor.klafke@ecomp.ufsm.br
+*   Contact at:
 */
 #include "ProcessClientMessage.h"
 
@@ -68,7 +68,7 @@ void Exec_MSG_Action(int conn, char *pMsg)
 	else
 		checktime = CurrentTime - 120000;
 
-	//Skill Ilusão
+	//Skill IlusÃ£o
 	if (m->Type == _MSG_Action3)
 	{
 		if (pMob[conn].MOB.Class != 3 || (pMob[conn].MOB.LearnedSkill & 2) == 0)
