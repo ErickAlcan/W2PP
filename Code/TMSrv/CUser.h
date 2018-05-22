@@ -1,5 +1,5 @@
 /*
-*   Copyright (C) {2015}  {Victor Klafke, Charles TheHouse}
+*   Copyright (C) {2015}  {VK, Charles TheHouse}
 *
 *   This program is free software: you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 *   You should have received a copy of the GNU General Public License
 *   along with this program.  If not, see [http://www.gnu.org/licenses/].
 *
-*   Contact at: victor.klafke@ecomp.ufsm.br
+*   Contact at:
 */
 #ifndef __CUSER__
 #define __CUSER__
@@ -101,7 +101,7 @@ public:
 	int Unk_2736; // 2736
 	int Range; // 2740
 	int CastleStatus; // 2744
-	char Unk9[400]; // 2748 // LastSkillTick // size correto é 400.
+	char Unk9[400]; // 2748 // LastSkillTick // size correto Ã© 400.
 	int Donate;
 	int MuteChat;
 	int KingChat;
