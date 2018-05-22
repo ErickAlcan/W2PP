@@ -1,5 +1,5 @@
 /*
-*   Copyright (C) {2015}  {Victor Klafke, Charles TheHouse}
+*   Copyright (C) {2015}  {VK, Charles TheHouse}
 *
 *   This program is free software: you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -14,7 +14,6 @@
 *   You should have received a copy of the GNU General Public License
 *   along with this program.  If not, see [http://www.gnu.org/licenses/].
 *
-*   Contact at: victor.klafke@ecomp.ufsm.br
 */
 #include "ProcessClientMessage.h"
 
@@ -97,13 +96,13 @@ void Exec_MSG_CombineItemExtracao(int conn, char *pMsg)
 		BASE_GetItemCode(&pMob[conn].MOB.Carry[ItemSlot], tt);
 		strcat(temp, tt);
 
-		ItemLog(temp, "*** Combine ht_skill_extração sucess ***", pUser[conn].IP);
+		ItemLog(temp, "*** Combine ht_skill_extraÃ§Ã£o sucess ***", pUser[conn].IP);
 	}
 	else
 	{
 		BASE_ClearItem(&pMob[conn].MOB.Carry[ItemSlot]);
 		SendItem(conn, ITEM_PLACE_CARRY, ItemSlot, &pMob[conn].MOB.Carry[ItemSlot]);
 
-		ItemLog("*** Combine ht_skill_extração fail ***", pMob[conn].MOB.MobName, pUser[conn].IP);
+		ItemLog("*** Combine ht_skill_extraÃ§Ã£o fail ***", pMob[conn].MOB.MobName, pUser[conn].IP);
 	}
 }
