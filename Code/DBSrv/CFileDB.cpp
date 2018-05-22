@@ -1,5 +1,5 @@
 /*
-*   Copyright (C) {2015}  {Victor Klafke, Charles TheHouse}
+*   Copyright (C) {2015}  {VK, Charles TheHouse}
 *
 *   This program is free software: you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 *   You should have received a copy of the GNU General Public License
 *   along with this program.  If not, see [http://www.gnu.org/licenses/].
 *
-*   Contact at: victor.klafke@ecomp.ufsm.br
+*   Contact at:
 */
 
 #include <windows.h>
@@ -687,7 +687,7 @@ int CFileDB::ProcessMessage(char *Msg, int conn)
 
 			if(IdxName != 0)
 			{
-				Log("err, desconectado. conex„o anterior finalizada.", m->AccountName, 0);
+				Log("err, desconectado. conex√£o anterior finalizada.", m->AccountName, 0);
 
 				if(m->DBNeedSave == 0)
 				{
@@ -941,7 +941,7 @@ int CFileDB::ProcessMessage(char *Msg, int conn)
 
 			for(int i = 0; i < len; i++)
 			{
-				if(m->MobName[i] == 'Ì' && m->MobName[i + 1] == 'Ì')
+				if(m->MobName[i] == '√≠' && m->MobName[i + 1] == '√≠')
 				{
 					SendDBSignal(conn, m->ID, _MSG_DBNewCharacterFail);
 
@@ -1505,7 +1505,7 @@ int CFileDB::ProcessMessage(char *Msg, int conn)
 
 		for (int i = 0; i < len; i++)
 		{
-			if (m->MobName[i] == 'Ì' && m->MobName[i + 1] == 'Ì')
+			if (m->MobName[i] == '√≠' && m->MobName[i + 1] == '√≠')
 			{
 				SendDBSignal(conn, m->ID, _MSG_DBNewCharacterFail);
 
@@ -1865,7 +1865,7 @@ int CFileDB::ProcessMessage(char *Msg, int conn)
 
 		for (int i = 0; i < len; i++)
 		{
-			if (m->MobName[i] == 'Ì' && m->MobName[i + 1] == 'Ì')
+			if (m->MobName[i] == '√≠' && m->MobName[i + 1] == '√≠')
 			{
 				SendDBSignal(conn, m->ID, _MSG_DBNewCharacterFail);
 
@@ -2095,7 +2095,7 @@ int CFileDB::ProcessMessage(char *Msg, int conn)
 		sm2.ID = m->ID;
 		sm2.Size = sizeof(MSG_DBClientMessage);
 
-		strcpy(sm2.String, "Sua conta agora È a prim·ria.");
+		strcpy(sm2.String, "Sua conta agora √© a prim√°ria.");
 
 		pUser[conn].cSock.SendOneMessage((char*)&sm2, sizeof(MSG_DBClientMessage));
 	} break;
