@@ -1,5 +1,5 @@
 /*
-*   Copyright (C) {2015}  {Victor Klafke, Charles TheHouse}
+*   Copyright (C) {2015}  {VK, Charles TheHouse}
 *
 *   This program is free software: you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 *   You should have received a copy of the GNU General Public License
 *   along with this program.  If not, see [http://www.gnu.org/licenses/].
 *
-*   Contact at: victor.klafke@ecomp.ufsm.br
+*   Contact at:
 */
 #include <Windows.h>
 #include <stdio.h>
@@ -49,7 +49,7 @@ int CNPCGenerator::ReadNPCGenerator()
 
 	if (fs == NULL)
 	{
-		MessageBoxA(hWndMain, "NPCGener.txt¶Ì •", "+-¶‘+° ¢√„", MB_OK);
+		MessageBoxA(hWndMain, "NPCGener.txt¬¶√≠ ¬•", "+-¬¶√î+¬° ¬¢√É√£√∞", MB_OK);
 
 		return 0;
 	}
@@ -111,10 +111,10 @@ int CNPCGenerator::ReadNPCGenerator()
 
 			int len = strlen(tmp1);
 
-			if (len > 8 && tmp1[0] != 'Õ')
+			if (len > 8 && tmp1[0] != '√ç')
 				fprintf(fp, "\t%s\t%s\n", &tmp1, &tmp2);
 
-			else if(tmp1[0] != 'Õ')
+			else if(tmp1[0] != '√ç')
 				fprintf(fp, "\t%s\t\t%s\n", &tmp1, &tmp2);
 		}
 	}
@@ -298,7 +298,7 @@ void CNPCGenerator::ReadRegion()
 
 	if (fp == NULL)
 	{
-		MessageBoxA(hWndMain, "N„o foi possivel carregar regions.txt", "WARNING!", MB_OK);
+		MessageBoxA(hWndMain, "N√£o foi possivel carregar regions.txt", "WARNING!", MB_OK);
 		return;
 	}
 
