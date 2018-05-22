@@ -1,5 +1,5 @@
 /*
-*   Copyright (C) {2015}  {Victor Klafke, Charles TheHouse}
+*   Copyright (C) {2015}  {VK, Charles TheHouse}
 *
 *   This program is free software: you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 *   You should have received a copy of the GNU General Public License
 *   along with this program.  If not, see [http://www.gnu.org/licenses/].
 *
-*   Contact at: victor.klafke@ecomp.ufsm.br
+*   Contact at: 
 */
 #ifndef __CNPCGENE__
 #define __CNPCGENE__
@@ -32,7 +32,7 @@ struct NPCGENLIST // 2988 total
 	int  MinuteGenerate;  //4
 	int  MaxNumMob;     //8
 	int  CurrentNumMob;    //12
-	int  MinGroup;     //16 //uNK3 COME«A AQUI
+	int  MinGroup;     //16 //uNK3 COMEËåø AQUI
 	int  MaxGroup;    //20
 	int  SegmentListX[MAX_SEGMENT]; //20 - 40
 	int  SegmentListY[MAX_SEGMENT]; //40 - 60
@@ -46,8 +46,8 @@ struct NPCGENLIST // 2988 total
 	int  RouteType;
 	int	 Offset;
 
-	STRUCT_MOB   Leader;                    // ∏ø¿« ºº∫Œ ≥ªøÎ.
-	STRUCT_MOB   Follower;                  // ∂ ∏∂¥œ ºº∫Œ≥ªøÎ
+	STRUCT_MOB   Leader;                    // ÁºöÁãº ÊäÄ‰Ωï ÈÉ¥‰æ©.
+	STRUCT_MOB   Follower;                  // Â¶í‰ªòËÅ™ ÊäÄ‰ΩïÈÉ¥‰æ©
 };
 
 struct MAPREGION
