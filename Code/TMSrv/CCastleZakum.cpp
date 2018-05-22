@@ -1,5 +1,5 @@
 /*
-*   Copyright (C) {2015}  {Victor Klafke, Charles TheHouse}
+*   Copyright (C) {2015}  {VK, Charles TheHouse}
 *
 *   This program is free software: you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 *   You should have received a copy of the GNU General Public License
 *   along with this program.  If not, see [http://www.gnu.org/licenses/].
 *
-*   Contact at: victor.klafke@ecomp.ufsm.br
+*   Contact at:
 */
 #include <Windows.h>
 #include <stdio.h>
@@ -102,9 +102,9 @@ BOOL CCastleZakum::OpenCastleGate(int conn, int gateid, MSG_UpdateItem *m)
 		return TRUE;
 	}
 
-#pragma region Port„o de entrada
+#pragma region Port√£o de entrada
 	if (gatekey == 10)
-	{//Port„o principal do castelo zakum onde define qual level ser· a quest.
+	{//Port√£o principal do castelo zakum onde define qual level ser√° a quest.
 		if (Quest < 0 || Quest >= MAX_CASTLE_QUEST)
 			return TRUE;
 
@@ -184,7 +184,7 @@ BOOL CCastleZakum::OpenCastleGate(int conn, int gateid, MSG_UpdateItem *m)
 		}
 	}
 #pragma endregion
-#pragma region Portıes de dentro
+#pragma region Port√µes de dentro
 	else if (gatekey >= 11 && gatekey <= 14)
 	{
 		if (Quest != CastleQuestLevel)
@@ -219,7 +219,7 @@ void CCastleZakum::MobKilled(int target, int conn, int PosX, int PosY)
 			SendNoticeArea(temp, 2176, 1160, 2300, 1276);
 			CastleQuestClear = 1;
 
-			//Entrega os itens, exp e gold para todos apÛs matarem o boss.
+			//Entrega os itens, exp e gold para todos ap√≥s matarem o boss.
 
 			int partyleader = pMob[conn].Leader;
 
@@ -399,7 +399,7 @@ void CCastleZakum::ReadCastleQuest()
 
 	if (fs == NULL)
 	{
-		MessageBoxA(hWndMain, "CastleQuest.txt n„o foi encontrado.", CASTLE_QUEST_PATH, MB_OK);
+		MessageBoxA(hWndMain, "CastleQuest.txt n√£o foi encontrado.", CASTLE_QUEST_PATH, MB_OK);
 
 		return;
 	}
