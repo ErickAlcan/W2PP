@@ -1,5 +1,5 @@
 /*
-*   Copyright (C) {2015}  {Victor Klafke, Charles TheHouse}
+*   Copyright (C) {2015}  {VK, Charles TheHouse}
 *
 *   This program is free software: you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 *   You should have received a copy of the GNU General Public License
 *   along with this program.  If not, see [http://www.gnu.org/licenses/].
 *
-*   Contact at: victor.klafke@ecomp.ufsm.br
+*   Contact at:
 */
 #include <Windows.h>
 #include <stdio.h>
@@ -2365,7 +2365,7 @@ void SetItemBonus2(STRUCT_ITEM *Dest)
 		Dest->stEffect[2].cEffect = g_pBonusValue3[_rand][2];
 		Dest->stEffect[2].cValue = g_pBonusValue3[_rand][3];
 	}
-	//Peito calça
+	//Peito calÃ§a
 	if(nPos == 4 || nPos == 8)
 	{
 		int _rand = rand()%48;
@@ -3416,7 +3416,7 @@ BOOL InitInstance(HANDLE hInstance, int nCmdShow)
 	hMainMenu = CreateMenu();
 	hWndMain = CreateWindow("MainClass", "Game Server",
 		WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN,    // Window style. 
-		CW_USEDEFAULT, CW_USEDEFAULT, 900, 600,            // W,H[MenuÇÕÄ¡¸é 480]
+		CW_USEDEFAULT, CW_USEDEFAULT, 900, 600,            // W,H[MenuÃ‡Ã•Ã„Â¡Â¸Ã© 480]
 		NULL, hMainMenu, (HINSTANCE)hInstance, NULL);
 
 	if (!hWndMain)
@@ -3497,7 +3497,7 @@ BOOL WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 
 	if (!ret)
 	{
-		Log("erro,não foi possivel iniciar a seguinte função : WSAInitialize", "-system", 0);
+		Log("erro,nÃ£o foi possivel iniciar a seguinte funÃ§Ã£o : WSAInitialize", "-system", 0);
 
 		return FALSE;
 	}
@@ -3517,7 +3517,7 @@ BOOL WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 		fclose(fp);
 	}
 	else
-		MessageBox(hWndMain, "Não foi possivel encontrar o arquivo LocalIP.txt", "Erro ao iniciar", NULL);
+		MessageBox(hWndMain, "NÃ£o foi possivel encontrar o arquivo LocalIP.txt", "Erro ao iniciar", NULL);
 
 	int r1 = 0, r2 = 0, r3 = 0, r4 = 0;
 
@@ -3550,7 +3550,7 @@ BOOL WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 
 	if (DBServerAddress[0] == 0)
 	{
-		MessageBox(hWndMain, "Não foi possivel pegar o ServerGroup. LocalIP.txt / ServerList.txt", "Erro ao iniciar", MB_OK | MB_SYSTEMMODAL);
+		MessageBox(hWndMain, "NÃ£o foi possivel pegar o ServerGroup. LocalIP.txt / ServerList.txt", "Erro ao iniciar", MB_OK | MB_SYSTEMMODAL);
 
 		return TRUE;
 	}
@@ -3563,8 +3563,8 @@ BOOL WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 
 	if (ret == NULL)
 	{
-		Log("erro, Não foi possivel se conectar a DBServer", "-system", 0);
-		MessageBox(hWndMain, "Não foi possivel se conectar a DBServer", "Erro ao iniciar", NULL);
+		Log("erro, NÃ£o foi possivel se conectar a DBServer", "-system", 0);
+		MessageBox(hWndMain, "NÃ£o foi possivel se conectar a DBServer", "Erro ao iniciar", NULL);
 
 		return FALSE;
 	}
@@ -3604,7 +3604,7 @@ BOOL WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 
 		if (ret == NULL)
 		{
-			Log("erro, Não foi possivel se conectar na BIServer", "-system", 0);
+			Log("erro, NÃ£o foi possivel se conectar na BIServer", "-system", 0);
 			BILLING = 0;
 		}
 		else
@@ -4115,7 +4115,7 @@ LONG APIENTRY MainWndProc(HWND hWnd, UINT message, UINT wParam, LONG lParam)
 	} break;
 	case WM_CLOSE:
 	{
-		if (MessageBox(hWndMain, "Você realmente deseja desligar o server?", "Aviso!!!", MB_ICONQUESTION | MB_YESNO) == IDNO)
+		if (MessageBox(hWndMain, "VocÃª realmente deseja desligar o server?", "Aviso!!!", MB_ICONQUESTION | MB_YESNO) == IDNO)
 			break;
 
 		if (BILLING != 0)
@@ -4754,7 +4754,7 @@ LABEL_59:
 			goto LessAffect;
 		}*/
 #pragma endregion
-#pragma region Trovão
+#pragma region TrovÃ£o
 		if(Type == 22)
 		{
 			  int alvo1 = 0;
@@ -8769,7 +8769,7 @@ void ReadLevelItemConfig(void)
 		Item.stEffect[2].cEffect = ival6;
 		Item.stEffect[2].cValue = ival7;
 
-		if(cls == 4 && type != 4)//Item para todas as classes mais não para todas build
+		if(cls == 4 && type != 4)//Item para todas as classes mais nÃ£o para todas build
 		{
 			LevelItem[0][type][level] = Item;
 			LevelItem[1][type][level] = Item;
