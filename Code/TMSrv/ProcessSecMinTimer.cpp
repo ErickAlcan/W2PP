@@ -1,5 +1,5 @@
 /*
-*   Copyright (C) {2015}  {Victor Klafke, Charles TheHouse}
+*   Copyright (C) {2015}  {VK, Charles TheHouse}
 *
 *   This program is free software: you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 *   You should have received a copy of the GNU General Public License
 *   along with this program.  If not, see [http://www.gnu.org/licenses/].
 *
-*   Contact at: victor.klafke@ecomp.ufsm.br
+*   Contact at:
 */
 #include <Windows.h>
 #include <stdio.h>
@@ -754,7 +754,7 @@ lbl_PST1:
 			}
 		}
 #pragma endregion
-#pragma region Pista de runas saída
+#pragma region Pista de runas saÃ­da
 		if ((when.tm_min == 15 || when.tm_min == 35 || when.tm_min == 55) && when.tm_sec == 0)
 		{//Pista de Runas saida
 
@@ -1553,7 +1553,7 @@ lbl_PST1:
 
 	Sec4 = SecCounter % 4;
 
-#pragma region Ataque / fala em ação dos mobs
+#pragma region Ataque / fala em aÃ§Ã£o dos mobs
 	for (int index = Sec4 + MAX_USER; index < MAX_MOB; index += 4)
 	{
 		if (pMob[index].Mode != MOB_COMBAT)
@@ -1710,8 +1710,8 @@ lbl_PST1:
 			int skill = sm.SkillIndex;
 
 			//109 : Raio Vermelho
-			//110 : Empurrão
-			//111 : Chão de espinhos
+			//110 : EmpurrÃ£o
+			//111 : ChÃ£o de espinhos
 			if(skill == 109 || skill == 110 || skill == 111)
 				goto KefraAttackLabel;
 			
