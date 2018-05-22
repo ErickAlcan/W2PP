@@ -1,5 +1,5 @@
 /*
-*   Copyright (C) {2015}  {Victor Klafke, Charles TheHouse}
+*   Copyright (C) {2015}  {VK, Charles TheHouse}
 *
 *   This program is free software: you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 *   You should have received a copy of the GNU General Public License
 *   along with this program.  If not, see [http://www.gnu.org/licenses/].
 *
-*   Contact at: victor.klafke@ecomp.ufsm.br
+*   Contact at:
 */
 #include "ProcessClientMessage.h"
 
@@ -36,7 +36,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 		return;
 	}
 
-	//Personagem morto tentando usar uma skill que não é ressureição
+	//Personagem morto tentando usar uma skill que nÃ£o Ã© ressureiÃ§Ã£o
 	if (pMob[conn].MOB.CurrentScore.Hp == 0 && m->SkillIndex != 99)
 	{
 		SendHpMode(conn);
@@ -418,7 +418,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 			}
 		}
 
-#pragma region Ataque físico
+#pragma region Ataque fÃ­sico
 		if (dam == -2)
 		{
 			int dis = BASE_GetDistance(m->PosX, m->PosY, m->TargetX, m->TargetY);
@@ -604,7 +604,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 			}
 #pragma endregion
 
-#pragma region Cura / Recuperação
+#pragma region Cura / RecuperaÃ§Ã£o
 			else if (InstanceType == 6)
 			{
 				if (pMob[idx].MOB.Clan == 4)
@@ -1226,7 +1226,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 			}
 #pragma endregion
 
-#pragma region Transformação
+#pragma region TransformaÃ§Ã£o
 			if (skillnum == 64 || skillnum == 66 || skillnum == 68 || skillnum == 70 || skillnum == 71)
 			{
 				pMob[conn].GetCurrentScore(conn);
@@ -1235,7 +1235,7 @@ void Exec_MSG_Attack(int conn, char *pMsg)
 			}
 #pragma endregion
 
-#pragma region Book Ressureição
+#pragma region Book RessureiÃ§Ã£o
 			if (pMob[conn].MOB.CurrentScore.Hp == 0 && skillnum == 99)
 			{
 				int rev = rand() % 115;
