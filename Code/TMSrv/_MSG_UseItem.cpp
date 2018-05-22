@@ -1,5 +1,5 @@
 /*
-*   Copyright (C) {2015}  {Victor Klafke, Charles TheHouse}
+*   Copyright (C) {2015}  {VK, Charles TheHouse}
 *
 *   This program is free software: you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -14,7 +14,6 @@
 *   You should have received a copy of the GNU General Public License
 *   along with this program.  If not, see [http://www.gnu.org/licenses/].
 *
-*   Contact at: victor.klafke@ecomp.ufsm.br
 */
 #include "ProcessClientMessage.h"
 
@@ -212,14 +211,14 @@ void Exec_MSG_UseItem(int conn, char *pMsg)
 				if(isTime < 1000)
 				{
 					SendItem(conn, m->SourType, m->SourPos, item);
-					SendClientMessage(conn, "VocÍ deve esperar 1 segundo.");
+					SendClientMessage(conn, "Voc√™ deve esperar 1 segundo.");
 					return;
 				}
 			}
 			pUser[conn].UseItemTime = GetTickCount();
 */
 
-#pragma region Refinar item Selado no invent·rio
+#pragma region Refinar item Selado no invent√°rio
 			if (itemtype == 5)
 			{
 				if (sanc >= 9)
@@ -529,7 +528,7 @@ void Exec_MSG_UseItem(int conn, char *pMsg)
 					NextPedra = 1745;//Sabedoria
 
 				else if(_rd < 90)
-					NextPedra = 1746;//MisericÛrdia
+					NextPedra = 1746;//Miseric√≥rdia
 
 				else if(_rd < 93)
 					NextPedra = 1747;//Abismo
@@ -546,7 +545,7 @@ void Exec_MSG_UseItem(int conn, char *pMsg)
 					NextPedra = 1745;//Sabedoria
 
 				else if(_rd < 86)
-					NextPedra = 1746;//MisericÛrdia
+					NextPedra = 1746;//Miseric√≥rdia
 
 				else if(_rd < 90)
 					NextPedra = 1747;//Abismo
@@ -554,7 +553,7 @@ void Exec_MSG_UseItem(int conn, char *pMsg)
 				RateSucess = 90;
 			}
 
-			else if(dest->sIndex == 1754)//Drag„o Lich
+			else if(dest->sIndex == 1754)//Drag√£o Lich
 			{
 				if(_rd < 3)
 					NextPedra = 1744;//Inteligencia
@@ -563,7 +562,7 @@ void Exec_MSG_UseItem(int conn, char *pMsg)
 					NextPedra = 1745;//Sabedoria
 
 				else if(_rd < 76)
-					NextPedra = 1746;//MisericÛrdia
+					NextPedra = 1746;//Miseric√≥rdia
 
 				else if(_rd < 85)
 					NextPedra = 1747;//Abismo
@@ -580,7 +579,7 @@ void Exec_MSG_UseItem(int conn, char *pMsg)
 					NextPedra = 1745;//Sabedoria
 
 				else if(_rd < 25)
-					NextPedra = 1746;//MisericÛrdia
+					NextPedra = 1746;//Miseric√≥rdia
 
 				else if(_rd < 80)
 					NextPedra = 1747;//Abismo
@@ -594,7 +593,7 @@ void Exec_MSG_UseItem(int conn, char *pMsg)
 					NextPedra = 1748;//Beleza
 									 
 				else if(_rd < 62)
-					NextPedra = 1749;//VitÛria
+					NextPedra = 1749;//Vit√≥ria
 
 				else if(_rd < 68)
 					NextPedra = 1750;//Originalidade
@@ -611,7 +610,7 @@ void Exec_MSG_UseItem(int conn, char *pMsg)
 					NextPedra = 1748;//Beleza
 									 
 				else if(_rd < 59)
-					NextPedra = 1749;//VitÛria
+					NextPedra = 1749;//Vit√≥ria
 
 				else if(_rd < 63)
 					NextPedra = 1750;//Originalidade
@@ -628,7 +627,7 @@ void Exec_MSG_UseItem(int conn, char *pMsg)
 					NextPedra = 1748;//Beleza
 									 
 				else if(_rd < 8)
-					NextPedra = 1749;//VitÛria
+					NextPedra = 1749;//Vit√≥ria
 
 				else if(_rd < 58)
 					NextPedra = 1750;//Originalidade
@@ -645,7 +644,7 @@ void Exec_MSG_UseItem(int conn, char *pMsg)
 					NextPedra = 1748;//Beleza
 									 
 				else if(_rd < 5)
-					NextPedra = 1749;//VitÛria
+					NextPedra = 1749;//Vit√≥ria
 
 				else if(_rd < 10)
 					NextPedra = 1750;//Originalidade
@@ -1195,7 +1194,7 @@ void Exec_MSG_UseItem(int conn, char *pMsg)
 		return;
 	}
 	#pragma endregion
-#pragma region PoÁ„o Kappa
+#pragma region Po√ß√£o Kappa
 	if (Vol == 10 || Vol == 55 || Vol == 200 || Vol == 201 || Vol == 56 || Vol == 52 || Vol == 53 || Vol == 57 || Vol == 202)
 	{
 		int value = 0;
@@ -1293,7 +1292,7 @@ void Exec_MSG_UseItem(int conn, char *pMsg)
 		else
 			memset(item, 0, sizeof(STRUCT_ITEM));
 
-		sprintf(temp, "useitem,poÁ„o_kappa affectslot:%d value:%d time:%d", EmptyAffect, value, tempo);
+		sprintf(temp, "useitem,po√ß√£o_kappa affectslot:%d value:%d time:%d", EmptyAffect, value, tempo);
 		ItemLog(temp, pUser[conn].AccountName, pUser[conn].IP);
 		return;
 	}
@@ -1431,7 +1430,7 @@ void Exec_MSG_UseItem(int conn, char *pMsg)
 		return;
 	}
 #pragma endregion
-#pragma region RaÁıes
+#pragma region Ra√ß√µes
 	if (Vol == 15)
 	{
 		if (m->DestType || m->DestPos != 14)
@@ -1512,12 +1511,12 @@ void Exec_MSG_UseItem(int conn, char *pMsg)
 			SendItem(conn, m->SourType, m->SourPos, item);
 		}
 
-		sprintf(temp, "useitem,raÁ„o mount:%d", mount);
+		sprintf(temp, "useitem,ra√ß√£o mount:%d", mount);
 		ItemLog(temp, pUser[conn].AccountName, pUser[conn].IP);
 		return;
 	}
 #pragma endregion
-#pragma region ¬mago
+#pragma region √Çmago
 	if (Vol == 16)
 	{
 		if (m->DestType || m->DestPos != 14)
@@ -2162,7 +2161,7 @@ void Exec_MSG_UseItem(int conn, char *pMsg)
 		return;
 	}
 #pragma endregion
-#pragma region Ba˙ de XP
+#pragma region Ba√∫ de XP
 	if (Vol == 198)
 	{
 		int sAffect = GetEmptyAffect(conn, 39);
@@ -2264,7 +2263,7 @@ void Exec_MSG_UseItem(int conn, char *pMsg)
 		pMob[conn].MOB.Coin += CReadFiles::QuestCoin[thisQuest];
 		pMob[conn].MOB.Exp += QuestExp;
 
-#pragma region Log de ExperiÍncia di·rio
+#pragma region Log de Experi√™ncia di√°rio
 		if (when.tm_yday != pMob[conn].extra.DayLog.YearDay)
 			pMob[conn].extra.DayLog.Exp = 0;
 
@@ -2308,7 +2307,7 @@ void Exec_MSG_UseItem(int conn, char *pMsg)
 			sprintf(temp, g_pMessageStringTable[_NS_GETEXP], QuestExpParty);
 			SendClientMessage(partyleader, temp);
 
-#pragma region Log de ExperiÍncia di·rio
+#pragma region Log de Experi√™ncia di√°rio
 			if (when.tm_yday != pMob[partyleader].extra.DayLog.YearDay)
 				pMob[partyleader].extra.DayLog.Exp = 0;
 
@@ -2345,7 +2344,7 @@ void Exec_MSG_UseItem(int conn, char *pMsg)
 			{
 				pMob[partymember].MOB.Exp += QuestExpParty;
 
-#pragma region Log de ExperiÍncia di·rio
+#pragma region Log de Experi√™ncia di√°rio
 				if (when.tm_yday != pMob[partymember].extra.DayLog.YearDay)
 					pMob[partymember].extra.DayLog.Exp = 0;
 
@@ -2864,7 +2863,7 @@ lbl_a_noparty:
 		return;
 	}
 #pragma endregion
-#pragma region Pedidos de caÁa
+#pragma region Pedidos de ca√ßa
 	if (Vol == 195)
 	{
 		if (item->sIndex < 3432 || item->sIndex > 3437)
@@ -3345,7 +3344,7 @@ lbl_a_noparty:
 		return;
 	}
 #pragma endregion
-#pragma region Pedra da F˙ria
+#pragma region Pedra da F√∫ria
 	if (item->sIndex == 3020)
 	{
 		if ((pMob[conn].extra.ClassMaster == CELESTIAL || pMob[conn].extra.ClassMaster == CELESTIALCS || pMob[conn].extra.ClassMaster == SCELESTIAL) && pMob[conn].MOB.CurrentScore.Level >= 199)
@@ -3575,7 +3574,7 @@ lbl_a_noparty:
 		return;
 	}
 #pragma endregion
-#pragma region RemÈdio da Coragem
+#pragma region Rem√©dio da Coragem
 	if (item->sIndex == 4046 || item->sIndex == 646)
 	{
 		int sAffect = GetEmptyAffect(conn, 30);
@@ -3643,7 +3642,7 @@ lbl_a_noparty:
 		return;
 	}
 #pragma endregion
-#pragma region Feijıes m·gicos - Removedor
+#pragma region Feij√µes m√°gicos - Removedor
 	if(Vol == 186)
 	{
 		STRUCT_ITEM *dest = GetItemPointer(&pMob[conn].MOB, pUser[conn].Cargo, m->DestType, m->DestPos);
@@ -3740,7 +3739,7 @@ lbl_a_noparty:
 		return;
 	}
 	#pragma endregion
-#pragma region Pergaminho do Perd„o
+#pragma region Pergaminho do Perd√£o
 	if (Vol == 203)
 	{
 		SetPKPoint(conn, 150);
@@ -4077,7 +4076,7 @@ lbl_a_noparty:
 		return;
 	}
 #pragma endregion
-#pragma region Entrada do TerritÛrio
+#pragma region Entrada do Territ√≥rio
 	if(Vol == 188)
 	{
 		int territorio = item->sIndex - 4111;
@@ -4162,7 +4161,7 @@ lbl_a_noparty:
 		return;
 	}
 #pragma endregion
-#pragma region JÛias PvP
+#pragma region J√≥ias PvP
 	if (Vol == 242)
 	{
 		int sAffect = GetEmptyAffect(conn, 8);
@@ -4225,7 +4224,7 @@ lbl_a_noparty:
 		return;
 	}
 #pragma endregion
-#pragma region Armazenagem - RecuperaÁ„o
+#pragma region Armazenagem - Recupera√ß√£o
 	if(Vol == 243)
 	{
 		if(item->sIndex == 3203)
@@ -4666,7 +4665,7 @@ lbl_a_noparty:
 		return;
 	}
 #pragma endregion
-#pragma region Barra Mytril (CrÌtico)
+#pragma region Barra Mytril (Cr√≠tico)
 	if(Vol == 238)
 	{
 		STRUCT_ITEM *dest = GetItemPointer(&pMob[conn].MOB, pUser[conn].Cargo, m->DestType, m->DestPos);
@@ -5025,7 +5024,7 @@ lbl_a_noparty:
 		return;
 	}
 #pragma endregion
-#pragma region ExtraÁ„o Elmo
+#pragma region Extra√ß√£o Elmo
 	if (item->sIndex == 3021)
 	{
 		int extra = BASE_GetItemAbility(item, EF_ITEMLEVEL);
@@ -5077,7 +5076,7 @@ lbl_a_noparty:
 			SendEmotion(conn, 14, 3);
 			return;
 		}
-		//ExtraÁ„o de cythera
+		//Extra√ß√£o de cythera
 
 		else 
 		{
@@ -5124,7 +5123,7 @@ lbl_a_noparty:
 		return;
 	}
 #pragma endregion
-#pragma region ExtraÁ„o Peito
+#pragma region Extra√ß√£o Peito
 	if (item->sIndex == 3022)
 	{
 		int extra = BASE_GetItemAbility(item, EF_ITEMLEVEL);
@@ -5176,7 +5175,7 @@ lbl_a_noparty:
 			SendEmotion(conn, 14, 3);
 			return;
 		}
-		//ExtraÁ„o de item arch
+		//Extra√ß√£o de item arch
 
 		else 
 		{
@@ -5222,7 +5221,7 @@ lbl_a_noparty:
 		return;
 	}
 #pragma endregion
-#pragma region ExtraÁ„o CalÁa
+#pragma region Extra√ß√£o Cal√ßa
 	if (item->sIndex == 3023)
 	{
 		int extra = BASE_GetItemAbility(item, EF_ITEMLEVEL);
@@ -5274,7 +5273,7 @@ lbl_a_noparty:
 			SendEmotion(conn, 14, 3);
 			return;
 		}
-		//ExtraÁ„o de item arch
+		//Extra√ß√£o de item arch
 
 		else 
 		{
@@ -5320,7 +5319,7 @@ lbl_a_noparty:
 		return;
 	}
 #pragma endregion
-#pragma region ExtraÁ„o Luva
+#pragma region Extra√ß√£o Luva
 	if (item->sIndex == 3024)
 	{
 		int extra = BASE_GetItemAbility(item, EF_ITEMLEVEL);
@@ -5372,7 +5371,7 @@ lbl_a_noparty:
 			SendEmotion(conn, 14, 3);
 			return;
 		}
-		//ExtraÁ„o de item arch
+		//Extra√ß√£o de item arch
 
 		else 
 		{
@@ -5418,7 +5417,7 @@ lbl_a_noparty:
 		return;
 	}
 #pragma endregion
-#pragma region ExtraÁ„o Bota
+#pragma region Extra√ß√£o Bota
 	if (item->sIndex == 3025)
 	{
 		int extra = BASE_GetItemAbility(item, EF_ITEMLEVEL);
@@ -5476,7 +5475,7 @@ lbl_a_noparty:
 			SendEmotion(conn, 14, 3);
 			return;
 		}
-		//ExtraÁ„o de item arch
+		//Extra√ß√£o de item arch
 
 		else 
 		{
@@ -5528,7 +5527,7 @@ lbl_a_noparty:
 		return;
 	}
 #pragma endregion
-#pragma region ExtraÁ„o Arma
+#pragma region Extra√ß√£o Arma
 	if (item->sIndex == 3026)
 	{
 		int extra = BASE_GetItemAbility(item, EF_ITEMLEVEL);
@@ -5580,7 +5579,7 @@ lbl_a_noparty:
 			SendEmotion(conn, 14, 3);
 			return;
 		}
-		//ExtraÁ„o de item arch
+		//Extra√ß√£o de item arch
 
 		else 
 		{
