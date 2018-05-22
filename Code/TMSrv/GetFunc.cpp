@@ -1,5 +1,5 @@
 /*
-*   Copyright (C) {2015}  {Victor Klafke, Charles TheHouse}
+*   Copyright (C) {2015}  {VK, Charles TheHouse}
 *
 *   This program is free software: you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 *   You should have received a copy of the GNU General Public License
 *   along with this program.  If not, see [http://www.gnu.org/licenses/].
 *
-*   Contact at: victor.klafke@ecomp.ufsm.br
+*   Contact at:
 */
 #include <Windows.h>
 
@@ -147,10 +147,10 @@ int GetMatchCombineEhre(STRUCT_ITEM *Item)
 		rate = 3;//Pedra espiritual
 
 	else if (Item[0].sIndex >= 661 && Item[0].sIndex <= 663 && Item[1].sIndex >= 661 && Item[1].sIndex <= 663 && Item[2].sIndex == 3464 && BASE_GetItemSanc(&Item[2]) >= 9)
-		rate = 4;//Pedra Amunr·
+		rate = 4;//Pedra Amunr√°
 
 	else if (Item[0].sIndex == 697 && Item[1].sIndex == 697 && Item[2].sIndex == 3338 && BASE_GetItemSanc(&Item[2]) <= 8)
-		rate = 5;//RefinaÁ„o abenÁoada Purificada
+		rate = 5;//Refina√ß√£o aben√ßoada Purificada
 
 	else if (Item[0].sIndex >= 2360 && Item[0].sIndex <= 2389 && Item[1].sIndex >= 4190 && Item[1].sIndex <= 4199)
 		rate = 6;//Traje montaria
@@ -472,7 +472,7 @@ int GetMatchCombineOdin(STRUCT_ITEM *Item)
 		return 4;//Level40 Celestial
 
 	else if (Item[0].sIndex == 5125 && Item[1].sIndex == 5115 && Item[2].sIndex == 5111 && Item[3].sIndex == 5112 && Item[4].sIndex == 5120 && Item[5].sIndex == 5128 && Item[6].sIndex == 5119)
-		return 5;//Pedra da f˙ria
+		return 5;//Pedra da f√∫ria
 
 	else if (Item[0].sIndex == 5126 && Item[1].sIndex == 5127 && Item[2].sIndex == 5121 && Item[3].sIndex == 5114 && Item[4].sIndex == 5125 && Item[5].sIndex == 5111 && Item[6].sIndex == 5118)
 		return 6;//Secreta da Agua
@@ -533,16 +533,16 @@ int GetMatchCombineAlquimia(STRUCT_ITEM *Item)
 		return 1;//Resistencia
 
 	if(Item[0].sIndex == 4127 && Item[1].sIndex == 4127 && Item[2].sIndex == 4127)
-		return 2;//RevelaÁ„o
+		return 2;//Revela√ß√£o
 
 	if(Item[0].sIndex == 4127 && Item[1].sIndex == 4127 && Item[2].sIndex == 697)
-		return 3;//RecuperaÁ„o
+		return 3;//Recupera√ß√£o
 
 	if(Item[0].sIndex == 412 && Item[1].sIndex == 2441 && Item[2].sIndex == 2444)
-		return 4;//AbsorÁ„o
+		return 4;//Absor√ß√£o
 
 	if(Item[0].sIndex == 412 && Item[1].sIndex == 2444 && Item[2].sIndex == 2443)
-		return 5;//ProteÁ„o
+		return 5;//Prote√ß√£o
 
 	if(Item[0].sIndex == 612 && BASE_GetItemSanc(&Item[0]) >= 9 && Item[1].sIndex == 2441 && Item[2].sIndex == 2442)
 		return 6;//Poder
@@ -551,7 +551,7 @@ int GetMatchCombineAlquimia(STRUCT_ITEM *Item)
 		return 7;//Armazenagem
 
 	if(Item[0].sIndex == 614 && BASE_GetItemSanc(&Item[0]) >= 9 && Item[1].sIndex == 2443 && Item[2].sIndex == 2444)
-		return 8;//Precis„o
+		return 8;//Precis√£o
 
 	if(Item[0].sIndex == 615 && BASE_GetItemSanc(&Item[0]) >= 9 && Item[1].sIndex == 697 && Item[2].sIndex == 697 && Item[3].sIndex == 697)
 		return 9;//Magia
