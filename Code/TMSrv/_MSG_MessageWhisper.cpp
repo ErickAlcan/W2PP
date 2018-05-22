@@ -1,5 +1,5 @@
 /*
-*   Copyright (C) {2015}  {Victor Klafke, Charles TheHouse}
+*   Copyright (C) {2015}  {VK, Charles TheHouse}
 *
 *   This program is free software: you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -14,7 +14,6 @@
 *   You should have received a copy of the GNU General Public License
 *   along with this program.  If not, see [http://www.gnu.org/licenses/].
 *
-*   Contact at: victor.klafke@ecomp.ufsm.br
 */
 #include "ProcessClientMessage.h"
 
@@ -38,7 +37,7 @@ void Exec_MSG_MessageWhisper(int conn, char *pMsg)
 		return;
 	}
 #pragma endregion
-#pragma region /getout - Fim cidadão
+#pragma region /getout - Fim cidadÃ£o
 	else if (strcmp(m->MobName, "getout") == 0)
 	{
 		pMob[conn].extra.Citizen = 0;
@@ -1253,7 +1252,7 @@ void Exec_MSG_MessageWhisper(int conn, char *pMsg)
 			return;
 		}
 #pragma endregion
-#pragma region Chat Cidadão
+#pragma region Chat CidadÃ£o
 		if (m->String[0] == '@')
 		{
 			if(pUser[conn].Message != 0)
@@ -1290,8 +1289,8 @@ void Exec_MSG_MessageWhisper(int conn, char *pMsg)
 		int target = 0;
 
 		if (strcmp(m->MobName, g_pMessageStringTable[_NN_Reply]) == 0
-			|| strcmp(m->MobName, "r") == 0 || strcmp(m->MobName, "ñº") == 0
-			|| strcmp(m->MobName, "¦õ") == 0)
+			|| strcmp(m->MobName, "r") == 0 || strcmp(m->MobName, "Ã±Âº") == 0
+			|| strcmp(m->MobName, "Â¦Ãµ") == 0)
 		{
 			if (!pUser[conn].LastChat[0])
 			{
