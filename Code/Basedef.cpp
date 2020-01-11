@@ -1807,9 +1807,8 @@ int BASE_GetItemAbility(STRUCT_ITEM *item, unsigned char Type)
     }
 
 	int sanc = BASE_GetItemSanc(item);
-
-	if(sanc == 9 && (nPos & 0xF00) != 0)
-		sanc = 10;
+	if(sanc >= 9 && (nPos & 0xF00) != 0)
+		sanc++;
 
 	if (Type != EF_GRID && Type != EF_CLASS && Type != EF_POS && Type != EF_WTYPE && Type != EF_RANGE && Type != EF_LEVEL && Type != EF_REQ_STR && Type != EF_REQ_INT && Type != EF_REQ_DEX && Type != EF_REQ_CON && Type != EF_VOLATILE && Type != EF_INCUBATE && Type != EF_INCUDELAY && Type != EF_MOBTYPE && Type != EF_ITEMTYPE && Type != EF_ITEMLEVEL && Type != EF_NOTRADE && Type != EF_NOSANC && Type != EF_DONATE)
 	{
@@ -1962,8 +1961,8 @@ int BASE_GetStaticItemAbility(STRUCT_ITEM *item, unsigned char Type)
 
 	int sanc = BASE_GetItemSanc(item);
 
-	if(sanc == 9 && (nPos & 0xF00) != 0)
-		sanc = 10;
+	if(sanc >= 9 && (nPos & 0xF00) != 0)
+		sanc ++;
 
 	if(Type != EF_GRID && Type != EF_CLASS && Type != EF_POS && Type != EF_WTYPE && Type != EF_RANGE && Type != EF_LEVEL && 
 		Type != EF_REQ_STR && Type != EF_REQ_INT && Type != EF_REQ_DEX && Type != EF_REQ_CON && Type != EF_INCUBATE && Type != EF_INCUDELAY)
@@ -2035,8 +2034,8 @@ int BASE_GetBonusItemAbility(STRUCT_ITEM *item, unsigned char Type)
 
 	int sanc = BASE_GetItemSanc(item);
 
-	if(sanc == 9 && (nPos & 0xF00) != 0)
-		sanc = 10;
+	if(sanc >= 9 && (nPos & 0xF00) != 0)
+		sanc ++;
 
 	if(sanc == 0)
 		return value;

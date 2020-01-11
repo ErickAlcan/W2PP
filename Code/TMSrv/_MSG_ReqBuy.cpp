@@ -145,7 +145,7 @@ void Exec_MSG_ReqBuy(int conn, char *pMsg)
 
 		pUser[targetID].AutoTrade.CarryPos[itemPos] = -1;
 
-		memset(&pUser[targetID].AutoTrade.Item, 0, sizeof(STRUCT_ITEM));
+		memset(&pUser[targetID].AutoTrade.Item[itemPos], 0, sizeof(STRUCT_ITEM));
 						
 		pUser[targetID].AutoTrade.Coin[itemPos] = 0;
 							
