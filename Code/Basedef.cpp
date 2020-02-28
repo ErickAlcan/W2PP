@@ -3108,8 +3108,8 @@ void BASE_GetCurrentScore(STRUCT_MOB & MOB, STRUCT_AFFECT *Affect, STRUCT_MOBEXT
 			}
 		}
 
-		int ItemInt = MOB.CurrentScore.Int - MOB.BaseScore.Int;
-		int ItemCon = MOB.CurrentScore.Con - MOB.BaseScore.Con;
+		int ItemInt = bInt - MOB.BaseScore.Int;
+		int ItemCon = bCon - MOB.BaseScore.Con;
 
 		int MPDelta = ItemInt * 2;
 		int HPDelta = ItemCon * 2;
