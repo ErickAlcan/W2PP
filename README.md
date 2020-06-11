@@ -59,7 +59,6 @@ The code is under the [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html) li
 * Eric Santos
 
 ### Helpful Links:    
-* [W2PP on Ragezone](http://forum.ragezone.com/f302/w2pp-project-1107746/)
 * [Visual Studio 2015](https://www.visualstudio.com/pt-br/downloads/download-visual-studio-vs.aspx)
 * [Learn Git/Github](https://help.github.com/articles/good-resources-for-learning-git-and-github/)
 * [Learn C/C++](http://www.learn-c.org/)
