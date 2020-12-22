@@ -52,11 +52,6 @@ The code is under the [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html) li
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-    
-### Active Contributors: 
-* Luis Gustavo
-* Woz Farias
-* Eric Santos
 
 ### Helpful Links:    
 * [Visual Studio 2015](https://www.visualstudio.com/pt-br/downloads/download-visual-studio-vs.aspx)
